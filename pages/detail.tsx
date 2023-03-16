@@ -4,14 +4,20 @@ import Feedback from "../components/Feedback";
 import Header from "../components/Header";
 import UserInfo from "../components/UserInfo";
 import styles from "styles/detail.module.scss";
+import levelImage0 from "public/image/0.png";
+import levelImage1 from "public/image/1.png";
+import levelImage2 from "public/image/2.png";
+import levelImage3 from "public/image/3.png";
+import levelImage4 from "public/image/4.png";
+import { StaticImageData } from "next/image";
 
 type UserInfo = {
   intraId: string;
   profileImage: string;
   blackHole: number;
   circle: number;
-  levelImage: string;
-  ePoint: string;
+  levelImage: StaticImageData;
+  ePoint: number;
 };
 
 export default function Detail() {
@@ -20,8 +26,8 @@ export default function Detail() {
     profileImage: "",
     blackHole: 128,
     circle: 2,
-    levelImage: "",
-    ePoint: "0",
+    levelImage: levelImage0,
+    ePoint: 0,
   });
 
   const getBasicInfoHandler = async () => {
@@ -35,6 +41,9 @@ export default function Detail() {
 
   useEffect(() => {
     getBasicInfoHandler();
+    if (userInfo.ePoint === 0) {
+      setUserInfo({ ...userInfo, levelImage: levelImage0 });
+    }
   }, []);
 
   return (

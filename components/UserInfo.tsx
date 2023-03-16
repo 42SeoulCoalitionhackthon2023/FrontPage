@@ -1,3 +1,4 @@
+import Image from "next/image";
 import styles from "/styles/userInfo.module.scss";
 
 type UserInfo = {
@@ -19,7 +20,14 @@ export default function UserInfo({ userInfo: userInfo }) {
       </div>
       <div className={styles.statInfo}>
         <div className={styles.circle}>Circle: {userInfo.circle}</div>
-        <div className={styles.levelImg}>{userInfo.levelImage}</div>
+        <div className={styles.levelImg}>
+          <Image
+            src={userInfo.levelImage}
+            alt="levelImage"
+            width={100}
+            height={100}
+          />
+        </div>
         <div className={styles.ePoint}>E.Points: {userInfo.ePoint}점</div>
       </div>
     </div>

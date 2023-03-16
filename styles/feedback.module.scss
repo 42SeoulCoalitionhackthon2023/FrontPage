@@ -37,6 +37,40 @@
       }
     }
   }
+  .subjectWrap {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0 1rem;
+    height: 1.5rem;
+    margin-top: 0.5rem;
+    overflow-x: scroll;
+
+    .subjectBtns {
+      display: flex;
+      font-size: 0.9rem;
+      input[type="radio"] {
+        display: none;
+      }
+    }
+    :checked + .subjectBtn {
+      border: solid 1.5px #2678f3;
+      border-radius: 10px;
+      color: #2678f3;
+    }
+    .subjectBtn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0 0.5rem;
+      height: 1.2rem;
+      border: 1.5px solid black;
+      border-radius: 10px;
+      margin-right: 1rem;
+      text-align: center;
+      cursor: pointer;
+    }
+  }
 
   .toggleWrap {
     @include Wrap;
@@ -72,9 +106,7 @@
     }
   }
 
-  /* 토글 버튼 */
   .toggleSwitch .toggleButton {
-    /* 버튼은 토글보다 작아야함  */
     position: absolute;
     top: 50%;
     left: 0.2rem;
@@ -85,7 +117,6 @@
     transform: translateY(-50%);
   }
 
-  /* 체크박스가 체크될 시 변경되는 요소 */
   .toggle:checked ~ .toggleSwitch {
     background: red;
     .toggleText {
@@ -97,7 +128,6 @@
   }
 
   .toggle:checked ~ .toggleSwitch .toggleButton {
-    /* 100% -> 끝위치, 1.8rem -> 기존 left(0.2) + 버튼 크기(1.6) */
     left: calc(100% - 1.5rem);
     background: white;
   }
