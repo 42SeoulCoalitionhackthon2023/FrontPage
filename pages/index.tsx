@@ -2,7 +2,7 @@ import Head from "next/head";
 import { BsSearch } from "react-icons/bs";
 import styles from "styles/Home.module.scss";
 
-export default function Home({ res }) {
+export default function Home() {
   return (
     <>
       <Head>
@@ -11,7 +11,6 @@ export default function Home({ res }) {
       <main className={styles.pageWrap}>
         <div className={styles.contentWrap}>
           <div className={styles.header}>
-            <div>{res?.text}</div>
             <h1>
               15 Minutes <br />
               Is Enough!
@@ -30,9 +29,9 @@ export default function Home({ res }) {
   );
 }
 
-export const getServerSideProps = async () => {
-  const res = await (await fetch(`http://13.209.130.135/test`)).json();
-  return {
-    props: { res },
-  };
-};
+// export const getServerSideProps = async () => {
+//   const res = await (await fetch(`http://13.209.130.135/test`)).json();
+//   return {
+//     props: { res },
+//   };
+// };
