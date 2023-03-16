@@ -1,8 +1,10 @@
+import axios from "axios";
 import Head from "next/head";
+import { useEffect } from "react";
 import { BsSearch } from "react-icons/bs";
 import styles from "/styles/Home.module.scss";
 
-export default function Home() {
+export default function Home({ res }) {
   return (
     <>
       <Head>
@@ -11,6 +13,7 @@ export default function Home() {
       <main className={styles.pageWrap}>
         <div className={styles.contentWrap}>
           <div className={styles.header}>
+            <div>{res?.text}</div>
             <h1>
               15 Minutes <br />
               Is Enough!
@@ -28,3 +31,10 @@ export default function Home() {
     </>
   );
 }
+
+export const getServerSideProps = async () => {
+  const { res } = await (await fetch(`http://13.209.130.135/test`)).json();
+  return {
+    props: { res },
+  };
+};

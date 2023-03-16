@@ -106,4 +106,15 @@
   .toggleButton {
     transition: all 0.2s ease-in;
   }
+
+  .feedbackLogWrap {
+    padding: 0 1rem;
+
+    .feedbackLog {
+      padding: 0 0.5rem;
+      border: 1.5px solid #e5e5e5;
+      border-radius: 10px;
+      background-color: #edeff2;
+    }
+  }
 }
