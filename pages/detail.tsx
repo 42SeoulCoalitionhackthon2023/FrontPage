@@ -1,6 +1,36 @@
+import { useState } from "react";
 import styles from "/styles/detail.module.css";
 
+type UserInfo = {
+  intraId: string;
+  profileImage: string;
+  blackHole: number;
+  circle: number;
+  levelImage: string;
+  ePoint: string;
+};
+
+type Feedback = {
+  corrector: string;
+  corrected: string;
+  final_mark: number;
+  comment: string;
+  feedback: string;
+  flag: boolean;
+  project_name: string;
+  created_at: string;
+};
+
 export default function Detail() {
+  const [userInfo, setUserInfo] = useState<UserInfo>({
+    intraId: "",
+    profileImage: "",
+    blackHole: 0,
+    circle: 0,
+    levelImage: "",
+    ePoint: "",
+  });
+
   return (
     <>
       <div>
