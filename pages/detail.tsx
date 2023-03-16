@@ -1,4 +1,5 @@
-import { useState } from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
 import styles from "/styles/detail.module.css";
 
 type UserInfo = {
@@ -30,6 +31,31 @@ export default function Detail() {
     levelImage: "",
     ePoint: "",
   });
+
+  const [feedback, setFeedback] = useState<Feedback[]>([]);
+
+  const getBasicInfoHandler = async () => {
+    try {
+      const res = await axios.get("http://localhost:3000/api/userInfo");
+      setUserInfo(res.data);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  const getFeedbackInfoHandler = async () => {
+    try {
+      const res = await axios.get("http://localhost:3000/api/feedback");
+      setFeedback(res.data);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  useEffect(() => {
+    getBasicInfoHandler();
+    getFeedbackInfoHandler();
+  }, []);
 
   return (
     <>
