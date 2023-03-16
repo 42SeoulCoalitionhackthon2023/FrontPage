@@ -1,4 +1,4 @@
-import styles from "/styles/Detail.module.css";
+import styles from "/styles/detail.module.css";
 
 export default function Detail() {
   return (

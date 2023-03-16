@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { BsSearch } from "react-icons/bs";
 import styles from "/styles/Home.module.css";
 
 export default function Home() {
@@ -16,10 +17,10 @@ export default function Home() {
             </h1>
           </div>
           <div className={styles.searchBar}>
+			<BsSearch className={styles.searchIcon} />
             <input
               className={styles.input}
               type="text"
-              placeholder="유저 검색하기"
             />
           </div>
           <div className={styles.info}>
