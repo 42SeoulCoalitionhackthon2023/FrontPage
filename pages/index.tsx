@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { BsSearch } from "react-icons/bs";
-import styles from "/styles/Home.module.css";
+import styles from "/styles/Home.module.scss";
 
 export default function Home() {
   return (
@@ -17,11 +17,8 @@ export default function Home() {
             </h1>
           </div>
           <div className={styles.searchBar}>
-			<BsSearch className={styles.searchIcon} />
-            <input
-              className={styles.input}
-              type="text"
-            />
+            <BsSearch className={styles.searchIcon} />
+            <input type="text" />
           </div>
           <div className={styles.info}>
             <div className={styles.infoBtn}>설명서</div>

@@ -1,0 +1,15 @@
+.userInfoWrap {
+  @include Wrap;
+  align-items: center;
+  justify-content: space-between;
+
+  .intraInfo {
+    height: 10rem;
+    width: 50%;
+  }
+
+  .statInfo {
+    height: 10rem;
+    width: 50%;
+  }
+}

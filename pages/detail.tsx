@@ -1,6 +1,9 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import styles from "/styles/detail.module.css";
+import Feedback from "../components/Feedback";
+import Header from "../components/Header";
+import UserInfo from "../components/UserInfo";
+import styles from "/styles/detail.module.scss";
 
 type UserInfo = {
   intraId: string;
@@ -9,17 +12,6 @@ type UserInfo = {
   circle: number;
   levelImage: string;
   ePoint: string;
-};
-
-type Feedback = {
-  corrector: string;
-  corrected: string;
-  final_mark: number;
-  comment: string;
-  feedback: string;
-  flag: boolean;
-  project_name: string;
-  created_at: string;
 };
 
 export default function Detail() {
@@ -32,8 +24,6 @@ export default function Detail() {
     ePoint: "",
   });
 
-  const [feedback, setFeedback] = useState<Feedback[]>([]);
-
   const getBasicInfoHandler = async () => {
     try {
       const res = await axios.get("http://localhost:3000/api/userInfo");
@@ -43,47 +33,15 @@ export default function Detail() {
     }
   };
 
-  const getFeedbackInfoHandler = async () => {
-    try {
-      const res = await axios.get("http://localhost:3000/api/feedback");
-      setFeedback(res.data);
-    } catch (e) {
-      console.error(e);
-    }
-  };
-
   useEffect(() => {
     getBasicInfoHandler();
-    getFeedbackInfoHandler();
   }, []);
 
   return (
-    <>
-      <div>
-        <div>
-          15 Minutes <br />
-          Is Enough!
-        </div>
-        {/* <SearchBar /> */}
-      </div>
-      <div>
-        <div>
-          <div>intra Id</div>
-          <div>Profile Image</div>
-          <div>128 days left</div>
-        </div>
-        <div>
-          <div>Circle: 2</div>
-          <div>Level Image</div>
-          <div>E.Points: 0.0점</div>
-        </div>
-      </div>
-      <div>
-        <div>써클</div>
-        <div>Feedback</div>
-        <div>toggle</div>
-        <div>map feedback</div>
-      </div>
-    </>
+    <div className={styles.pageWrap}>
+      <Header />
+      <UserInfo />
+      <Feedback />
+    </div>
   );
 }
