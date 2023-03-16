@@ -1,0 +1,48 @@
+Arguments: 
+  /opt/homebrew/Cellar/node/19.6.1/bin/node /opt/homebrew/Cellar/yarn/1.22.19/libexec/bin/yarn.js add react-icons
+
+PATH: 
+  /Users/sungwook/.rbenv/shims:/Users/sungwook/.rbenv/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/sungwook/.rbenv/shims:/Users/sungwook/.rbenv/bin:/opt/homebrew/bin:/opt/homebrew/sbin
+
+Yarn version: 
+  1.22.19
+
+Node version: 
+  19.6.1
+
+Platform: 
+  darwin arm64
+
+Trace: 
+  Error: EACCES: permission denied, unlink '/Users/sungwook/Desktop/FrontPage/node_modules/@babel/code-frame/LICENSE'
+
+npm manifest: 
+  {
+    "name": "15min_in_enough",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+      "dev": "next dev",
+      "build": "next build",
+      "start": "next start",
+      "lint": "next lint"
+    },
+    "dependencies": {
+      "@types/jest": "^29.4.4",
+      "@types/react-dom": "^18.0.11",
+      "next": "13.2.4",
+      "react": "18.2.0",
+      "react-dom": "18.2.0",
+      "typescript": "^4.9.5"
+    },
+    "devDependencies": {
+      "@types/node": "^18.15.3",
+      "@types/react": "^18.0.28"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
