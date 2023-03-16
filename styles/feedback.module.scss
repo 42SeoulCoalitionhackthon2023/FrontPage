@@ -13,14 +13,14 @@
     .radioBtns {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      font-size: 0.7rem;
+      justify-content: space-around;
+      font-size: 0.9rem;
       height: 1.5rem;
       input[type="radio"] {
         display: none;
       }
       :checked + .radioBtn {
-        border: solid 1px #2678f3;
+        border: solid 1.5px #2678f3;
         border-radius: 10px;
         color: #2678f3;
       }
@@ -30,7 +30,7 @@
         align-items: center;
         width: 2rem;
         height: 1.2rem;
-        border: 1px solid black;
+        border: 1.5px solid black;
         border-radius: 10px;
         text-align: center;
         cursor: pointer;
@@ -42,25 +42,33 @@
     @include Wrap;
     align-items: center;
     margin-top: 1rem;
-  }
+    margin-bottom: 1rem;
 
-  .toggleSwitch {
-    display: block;
-    position: relative;
-    width: 5rem;
-    height: 1.6rem;
-    border-radius: 2rem;
-    background: lightblue;
-    color: white;
-    margin-left: 1rem;
-    cursor: pointer;
-    .toggleText {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      font-size: 1rem;
+    .feedbackTitle {
+      font-size: 1.5rem;
       font-weight: 600;
-      transform: translate(0, -50%);
+      margin-top: 0.2rem;
+      margin-left: 1rem;
+    }
+
+    .toggleSwitch {
+      display: block;
+      position: relative;
+      width: 5rem;
+      height: 1.6rem;
+      border-radius: 2rem;
+      background: lightblue;
+      color: white;
+      margin-left: 1rem;
+      cursor: pointer;
+      .toggleText {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        font-size: 1rem;
+        font-weight: 600;
+        transform: translate(0, -50%);
+      }
     }
   }
 

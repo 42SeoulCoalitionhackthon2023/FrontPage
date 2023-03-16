@@ -16,12 +16,12 @@ type UserInfo = {
 
 export default function Detail() {
   const [userInfo, setUserInfo] = useState<UserInfo>({
-    intraId: "",
+    intraId: "sungwook",
     profileImage: "",
-    blackHole: 0,
-    circle: 0,
+    blackHole: 128,
+    circle: 2,
     levelImage: "",
-    ePoint: "",
+    ePoint: "0",
   });
 
   const getBasicInfoHandler = async () => {
@@ -40,7 +40,7 @@ export default function Detail() {
   return (
     <div className={styles.pageWrap}>
       <Header />
-      <UserInfo />
+      <UserInfo userInfo={userInfo} />
       <Feedback />
     </div>
   );

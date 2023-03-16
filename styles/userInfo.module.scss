@@ -2,14 +2,50 @@
   @include Wrap;
   align-items: center;
   justify-content: space-between;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 
   .intraInfo {
     height: 10rem;
     width: 50%;
+
+    .intraId {
+      display: flex;
+      justify-content: center;
+      height: 15%;
+    }
+    .profileImg {
+      display: flex;
+      justify-content: center;
+      height: 70%;
+    }
+    .blackHole {
+      display: flex;
+      justify-content: center;
+      height: 15%;
+    }
   }
 
   .statInfo {
     height: 10rem;
     width: 50%;
+
+    .circle {
+      display: flex;
+      justify-content: center;
+      height: 15%;
+    }
+
+    .levelImg {
+      display: flex;
+      justify-content: center;
+      height: 70%;
+    }
+
+    .ePoint {
+      display: flex;
+      justify-content: center;
+      height: 15%;
+    }
   }
 }
