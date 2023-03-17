@@ -12,3 +12,17 @@ $gray: #edeff2;
   font-weight: normal;
   font-style: normal;
 }
+
+@font-face {
+  font-family: "HandFont";
+  src: url("../public/font/handwritten.ttf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "HandFontT";
+  src: url("../public/font/handwrittenT.ttf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}

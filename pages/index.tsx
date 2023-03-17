@@ -1,25 +1,15 @@
 import Head from "next/head";
-import { useEffect, useRef } from "react";
+import Link from "next/link";
+import { useState } from "react";
 import { BsSearch } from "react-icons/bs";
 import styles from "styles/Home.module.scss";
-import Title from "../components/Title";
 
 export default function Home() {
-  const getHandler = async () => {
-    try {
-      const res = await (
-        await fetch(`https://api.evaluation.42seoul.link/test3`)
-      ).json();
-      console.log(res);
-      console.log(res.data);
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  const [intraId, setIntraId] = useState<string>("");
 
-  useEffect(() => {
-    getHandler();
-  }, []);
+  const inputHandler = (e) => {
+    setIntraId(e.target);
+  };
 
   return (
     <>
@@ -30,17 +20,20 @@ export default function Home() {
         <div className={styles.contentWrap}>
           <div className={styles.header}>
             <div className={styles.title}>
-              <Title
-                width={200}
-                height={100}
-              />
+              15 Minutes <br /> is Enough!
             </div>
           </div>
           <div className={styles.searchBar}>
             <BsSearch className={styles.searchIcon} />
-            <input type="text" />
+            <input
+              type="text"
+              onChange={inputHandler}
+            />
           </div>
           <div className={styles.info}>
+            <div className={styles.searchBtn}>
+              <Link href={`/detail?intraId=${intraId}`}>검색하기</Link>
+            </div>
             <div className={styles.infoBtn}>설명서</div>
           </div>
         </div>

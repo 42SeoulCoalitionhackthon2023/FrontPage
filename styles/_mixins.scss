@@ -1,9 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Kranky&display=swap");
 
-@mixin title {
-  font: 1rem "Kranky", cursive;
-  text-decoration: underline;
-}
 
 @mixin searchBar {
   border-radius: 0.6rem;

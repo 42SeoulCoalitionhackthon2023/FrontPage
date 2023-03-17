@@ -6,7 +6,10 @@
   align-items: center;
   justify-content: space-around;
   .title {
-    font: 1rem "Kranky", cursive;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "HandFontT";
     width: 40%;
     font-size: 1.7rem;
   }

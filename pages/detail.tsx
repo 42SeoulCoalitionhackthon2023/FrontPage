@@ -10,6 +10,7 @@ import levelImage1 from "public/image/1.png";
 import levelImage2 from "public/image/2.png";
 import levelImage3 from "public/image/3.png";
 import levelImage4 from "public/image/4.png";
+import { useRouter } from "next/router";
 
 type UserInfo = {
   intraId: string;
@@ -24,6 +25,9 @@ const LEVELTWO = 70;
 const LEVELTHREE = 90;
 
 export default function Detail() {
+  const router = useRouter();
+  const { intraId } = router.query;
+
   const [userInfo, setUserInfo] = useState<UserInfo>({
     intraId: "",
     image: "",
@@ -35,7 +39,7 @@ export default function Detail() {
 
   const getBasicInfoHandler = async () => {
     try {
-      const res = await instance.get("/user/susong");
+      const res = await instance.get(`/user/${intraId}`);
       setUserInfo(res?.data);
       if (userInfo.level <= LEVELZERO) {
         setLevelImage(levelImage0);
@@ -55,7 +59,6 @@ export default function Detail() {
 
   useEffect(() => {
     getBasicInfoHandler();
-    console.log(userInfo);
   }, []);
 
   return (
