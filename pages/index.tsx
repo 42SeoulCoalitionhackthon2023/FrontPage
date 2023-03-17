@@ -8,6 +8,7 @@ export default function Home() {
     try {
       const res = await (await fetch(`http://13.209.130.135/test2`)).json();
       console.log(res);
+      console.log(res.data);
     } catch (err) {
       console.log(err);
     }
