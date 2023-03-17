@@ -14,6 +14,7 @@
     flex-direction: column;
     align-items: stretch;
     min-height: 1.5rem;
+
     .radioBtns {
       display: flex;
       align-items: center;
@@ -46,8 +47,9 @@
     flex-direction: column;
     align-items: stretch;
     padding: 0 1rem;
-    min-height: 1.5rem;
+    min-height: 2rem;
     margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
     overflow-x: scroll;
 
     .subjectBtns {
@@ -79,7 +81,6 @@
   .toggleWrap {
     @include Wrap;
     align-items: center;
-    margin-top: 1rem;
     margin-bottom: 1rem;
 
     .feedbackTitle {
