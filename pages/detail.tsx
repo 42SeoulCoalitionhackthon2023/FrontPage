@@ -37,7 +37,9 @@ export default function Detail() {
 
   const getBasicInfoHandler = async () => {
     try {
-      const res = await axios.get("api.evaluation.42seoul.link/user/susong");
+      const res = await await (
+        await fetch(`api.evaluation.42seoul.link/user/susong`)
+      ).json();
       setUserInfo(res.data);
       if (userInfo.ePoint <= LEVELZERO) {
         setUserInfo({ ...userInfo, levelImage: levelImage0 });
