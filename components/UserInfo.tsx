@@ -28,6 +28,7 @@ export default function UserInfoComponent({ userInfo, levelImage }: Props) {
         <div className={styles.intraId}>{intraId}</div>
         <div className={styles.profileImg}>
           <img
+            style={{ borderRadius: "70%" }}
             src={image}
             alt="Profile Image"
             width="110"
