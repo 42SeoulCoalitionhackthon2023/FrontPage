@@ -141,6 +141,16 @@ export default function FeedbackComponent({ userId }: { userId: number }) {
     getSubjectFeedbackHandler();
   }, [subjectBtn]);
 
+  useEffect(() => {
+    if (subjectBtn) {
+      getSubjectFeedbackHandler();
+    } /* else if (circleBtn !== "0") {
+      getCircleFeedbackHandler();
+    }  */ else {
+      getRecentFeedbackHandler();
+    }
+  }, [toggle]);
+
   return (
     <div className={styles.feedbackWrap}>
       <div className={styles.radioWrap}>
