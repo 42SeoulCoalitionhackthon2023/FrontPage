@@ -204,7 +204,6 @@ export default function FeedbackComponent({ userId }: { userId: number }) {
             type="checkbox"
             id="toggle"
             className={styles.toggle}
-            checked={toggle}
             onChange={() => setToggle(!toggle)}
             hidden
           />
