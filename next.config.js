@@ -4,12 +4,13 @@ const path = require("path");
 const nextConfig = {
   reactStrictMode: false,
   env: {
-    BASE_URL: "api.evaluation.42seoul.link",
+    BASE_URL: process.env.BASE_URL,
   },
   sassOptions: {
     includePaths: [path.join(__dirname, "styles")],
     prependData: `@import "styles/_variables.scss"; @import "styles/_mixins.scss";`,
   },
+  assetPrefix: "",
 };
 
 module.exports = nextConfig;
