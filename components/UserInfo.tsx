@@ -27,7 +27,7 @@ export default function UserInfoComponent({ userInfo, levelImage }: Props) {
       <div className={styles.intraInfo}>
         <div className={styles.intraId}>{intraId}</div>
         <div className={styles.profileImg}>
-          <Image
+          <img
             src={image}
             alt="Profile Image"
             width="250"
