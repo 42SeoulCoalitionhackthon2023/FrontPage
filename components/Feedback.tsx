@@ -122,6 +122,7 @@ export default function Feedback() {
 
   const circleHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCircleBtn(e.target.value);
+    setSubjectBtn("");
   };
 
   const subjectHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
