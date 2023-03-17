@@ -39,18 +39,18 @@ export default function Detail() {
     try {
       const res = await instance.get(`/user/${intraId}`);
       setUserInfo(res?.data);
-      if (userInfo.level >= LEVELZERO) {
-        setLevelImage(levelImage1);
-      } else if (userInfo.level >= LEVELONE) {
-        setLevelImage(levelImage2);
-      } else if (userInfo.level >= LEVELTWO) {
-        setLevelImage(levelImage3);
+      if (userInfo.level >= LEVELFIVE || userInfo.level < LEVELZERO) {
+        setLevelImage(levelImage0);
+      } else if (userInfo.level >= LEVELFOUR) {
+        setLevelImage(levelImage5);
       } else if (userInfo.level >= LEVELTHREE) {
         setLevelImage(levelImage4);
-      } else if (userInfo.level >= LEVELFOUR && userInfo.level < LEVELFIVE) {
-        setLevelImage(levelImage5);
+      } else if (userInfo.level >= LEVELTWO) {
+        setLevelImage(levelImage3);
+      } else if (userInfo.level >= LEVELONE) {
+        setLevelImage(levelImage2);
       } else {
-        setLevelImage(levelImage0);
+        setLevelImage(levelImage1);
       }
     } catch (e) {
       console.error(e);
