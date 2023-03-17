@@ -30,8 +30,8 @@ export default function UserInfoComponent({ userInfo, levelImage }: Props) {
           <img
             src={image}
             alt="Profile Image"
-            width="250"
-            height="250"
+            width="150"
+            height="150"
           />
         </div>
         <div
