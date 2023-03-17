@@ -23,6 +23,7 @@ export default function Detail() {
   const { intraId } = router.query;
 
   const [userInfo, setUserInfo] = useState<UserInfo>({
+    userId: 0,
     intraId: "",
     image: "",
     blackhole: "",
@@ -62,7 +63,7 @@ export default function Detail() {
         userInfo={userInfo}
         levelImage={levelImage}
       />
-      <Feedback intraId={intraId as string} />
+      <Feedback userId={userInfo.userId} />
     </div>
   );
 }

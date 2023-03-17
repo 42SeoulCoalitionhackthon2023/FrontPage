@@ -76,7 +76,7 @@ const circleFive = [
 
 const circleSix = [{ id: "6-0", label: "ft-transcendence" }];
 
-export default function Feedback({ intraId }: { intraId: string }) {
+export default function Feedback({ userId }: { userId: number }) {
   const [feedback, setFeedback] = useState<Feedback[]>([]);
   const [toggle, setToggle] = useState<boolean>(false);
   const [circleBtn, setCircleBtn] = useState<string>("0");
@@ -96,7 +96,7 @@ export default function Feedback({ intraId }: { intraId: string }) {
 
   const getFeedbackInfoHandler = async () => {
     try {
-      const res = await instance.get(`/comment/corrector=${intraId}`);
+      const res = await instance.get(`/comment/corrector=${userId}`);
       setFeedback(res.data);
     } catch (e) {
       console.error(e);
