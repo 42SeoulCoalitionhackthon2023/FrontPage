@@ -17,48 +17,48 @@ const circleTypes = [
 const circleZero = [{ id: "0-0", label: "Libft" }];
 
 const circleOne = [
-  { id: "1-0", label: "get_next_line" },
-  { id: "1-1", label: "ft_printf" },
-  { id: "1-2", label: "Born2beroot" },
+  { id: "get_next_line", label: "get_next_line" },
+  { id: "ft_printf", label: "ft_printf" },
+  { id: "born2beroot", label: "Born2beroot" },
 ];
 
 const circleTwo = [
-  { id: "2-0", label: "so_long" },
-  { id: "2-1", label: "FDF" },
-  { id: "2-2", label: "fract_ol" },
-  { id: "2-3", label: "minitalk" },
-  { id: "2-4", label: "pipex" },
-  { id: "2-5", label: "push_swap" },
+  { id: "so_long", label: "so_long" },
+  { id: "fdf", label: "FDF" },
+  { id: "fract_ol", label: "fract_ol" },
+  { id: "minitalk", label: "minitalk" },
+  { id: "pipex", label: "pipex" },
+  { id: "push_swap", label: "push_swap" },
 ];
 
 const circleThree = [
-  { id: "3-0", label: "minishell" },
-  { id: "3-1", label: "Philosophers" },
+  { id: "minishell", label: "minishell" },
+  { id: "philosophers", label: "Philosophers" },
 ];
 
 const circleFour = [
-  { id: "4-0", label: "cub3D" },
-  { id: "4-1", label: "miniRT" },
-  { id: "4-2", label: "NetPractice" },
-  { id: "4-3", label: "CPP_00" },
-  { id: "4-4", label: "CPP_01" },
-  { id: "4-5", label: "CPP_02" },
-  { id: "4-6", label: "CPP_03" },
-  { id: "4-7", label: "CPP_04" },
+  { id: "cub3d", label: "cub3D" },
+  { id: "mini", label: "miniRT" },
+  { id: "net_practice", label: "NetPractice" },
+  { id: "cpp-00", label: "CPP_00" },
+  { id: "cpp-01", label: "CPP_01" },
+  { id: "cpp-02", label: "CPP_02" },
+  { id: "cpp-03", label: "CPP_03" },
+  { id: "cpp-04", label: "CPP_04" },
 ];
 
 const circleFive = [
-  { id: "5-0", label: "CPP_05" },
-  { id: "5-1", label: "CPP_06" },
-  { id: "5-2", label: "CPP_07" },
-  { id: "5-3", label: "CPP_08" },
-  { id: "5-4", label: "CPP_09" },
-  { id: "5-5", label: "WebServ" },
-  { id: "5-6", label: "ft_irc" },
-  { id: "5-7", label: "Inception" },
+  { id: "cpp-05", label: "CPP_05" },
+  { id: "cpp-06", label: "CPP_06" },
+  { id: "cpp-07", label: "CPP_07" },
+  { id: "cpp-08", label: "CPP_08" },
+  { id: "cpp-09", label: "CPP_09" },
+  { id: "webserv", label: "WebServ" },
+  { id: "ft_irc", label: "ft_irc" },
+  { id: "inception", label: "Inception" },
 ];
 
-const circleSix = [{ id: "6-0", label: "ft-transcendence" }];
+const circleSix = [{ id: "ft_transcendence", label: "ft-transcendence" }];
 
 export default function FeedbackComponent({ userId }: { userId: number }) {
   const [feedback, setFeedback] = useState<Feedback[]>([]);
@@ -75,12 +75,37 @@ export default function FeedbackComponent({ userId }: { userId: number }) {
   const subjectHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const subjectId = e.target.value;
     setSubjectBtn(subjectId);
-    //ToDo : get요청 해당 과제 feedback 정보 받기
   };
 
-  const getFeedbackInfoHandler = async () => {
+  const getRecentFeedbackHandler = async () => {
     try {
-      const res = await instance.get(`/comment/corrector=${userId}`);
+      const res = await instance.get(
+        `/comment/${toggle ? "corrected" : "corrector"}=${userId}`
+      );
+      setFeedback(res?.data);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  //   const getCircleFeedbackHandler = async () => {
+  //     try {
+  //       const res = await instance.get(
+  //         `/comment/${
+  //           toggle ? "corrected" : "corrector"
+  //         }=${userId}&circle=${circleBtn}`
+  //       );
+  //       setFeedback(res?.data);
+  //     } catch (e) {
+  //       console.error(e);
+  //     }
+  //   };
+
+  const getSubjectFeedbackHandler = async () => {
+    try {
+      const res = await instance.get(
+        `/comment/${toggle ? "corrected" : "corrector"}=${userId}/${subjectBtn}`
+      );
       setFeedback(res?.data);
     } catch (e) {
       console.error(e);
@@ -88,7 +113,7 @@ export default function FeedbackComponent({ userId }: { userId: number }) {
   };
 
   useEffect(() => {
-    getFeedbackInfoHandler();
+    getRecentFeedbackHandler();
   }, []);
 
   useEffect(() => {
@@ -109,8 +134,12 @@ export default function FeedbackComponent({ userId }: { userId: number }) {
     } else {
       setSubjects(circleSix);
     }
-    //ToDo : get요청 해당 써클 feedback 정보 받기
+    // getCircleFeedbackHandler();
   }, [circleBtn]);
+
+  useEffect(() => {
+    getSubjectFeedbackHandler();
+  }, [subjectBtn]);
 
   return (
     <div className={styles.feedbackWrap}>
