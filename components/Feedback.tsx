@@ -1,23 +1,7 @@
 import instance from "axios";
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import styles from "/styles/feedback.module.scss";
-
-type Feedback = {
-  corrector: string;
-  corrected: string;
-  final_mark: number;
-  comment: string;
-  feedback: string;
-  flag: boolean;
-  project_name: string;
-  created_at: string;
-};
-
-type Subject = {
-  id: string;
-  label: string;
-};
+import { UserInfo, Feedback, Subject } from "types";
 
 const circleTypes = [
   { id: "0", label: "써클" },
@@ -76,7 +60,7 @@ const circleFive = [
 
 const circleSix = [{ id: "6-0", label: "ft-transcendence" }];
 
-export default function Feedback({ userId }: { userId: number }) {
+export default function Feedback({ userInfo }: { userInfo: UserInfo }) {
   const [feedback, setFeedback] = useState<Feedback[]>([]);
   const [toggle, setToggle] = useState<boolean>(false);
   const [circleBtn, setCircleBtn] = useState<string>("0");
@@ -96,7 +80,7 @@ export default function Feedback({ userId }: { userId: number }) {
 
   const getFeedbackInfoHandler = async () => {
     try {
-      const res = await instance.get(`/comment/corrector=${userId}`);
+      const res = await instance.get(`/comment/corrector=${userInfo.userId}`);
       setFeedback(res?.data);
     } catch (e) {
       console.error(e);
