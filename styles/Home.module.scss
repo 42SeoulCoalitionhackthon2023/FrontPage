@@ -1,12 +1,16 @@
 @import "styles/common.scss";
 
 .pageWrap {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   max-width: 50rem;
   min-height: calc(100vh - 8rem);
   margin: 0 auto;
+
+  .background {
+    @include background;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
   .contentWrap {
     display: flex;
@@ -20,6 +24,7 @@
         font-family: "HandFontT";
         font-size: 2.5rem;
         margin-bottom: 0.5rem;
+        cursor: pointer;
       }
     }
 

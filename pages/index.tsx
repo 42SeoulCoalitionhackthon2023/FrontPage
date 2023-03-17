@@ -24,28 +24,30 @@ export default function Home() {
         <title>15 Minutes Is Enough!</title>
       </Head>
       <main className={styles.pageWrap}>
-        <div className={styles.contentWrap}>
-          <div className={styles.header}>
-            <div
-              className={styles.title}
-              onClick={goHome}
-            >
-              15 Minutes <br /> is Enough!
+        <div className={styles.background}>
+          <div className={styles.contentWrap}>
+            <div className={styles.header}>
+              <div
+                className={styles.title}
+                onClick={goHome}
+              >
+                15 Minutes <br /> is Enough!
+              </div>
             </div>
-          </div>
-          <div className={styles.searchBar}>
-            <BsSearch className={styles.searchIcon} />
-            <input
-              type="text"
-              value={intraId}
-              onChange={inputHandler}
-            />
-          </div>
-          <div className={styles.info}>
-            <div className={styles.searchBtn}>
-              <Link href={`/detail?intraId=${intraId}`}>검색하기</Link>
+            <div className={styles.searchBar}>
+              <BsSearch className={styles.searchIcon} />
+              <input
+                type="text"
+                value={intraId}
+                onChange={inputHandler}
+              />
             </div>
-            <div className={styles.infoBtn}>설명서</div>
+            <div className={styles.info}>
+              <div className={styles.searchBtn}>
+                <Link href={`/detail?intraId=${intraId}`}>검색하기</Link>
+              </div>
+              <div className={styles.infoBtn}>설명서</div>
+            </div>
           </div>
         </div>
       </main>

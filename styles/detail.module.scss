@@ -1,11 +1,13 @@
-.pageWrap {
+.background {
+  @include background;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.pageWrap {
   max-width: 50rem;
   min-height: calc(100vh - 8rem);
   margin: 0 auto;
-
-
 }

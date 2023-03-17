@@ -58,12 +58,14 @@ export default function Detail() {
 
   return (
     <div className={styles.pageWrap}>
-      <Header />
-      <UserInfoComponent
-        userInfo={userInfo}
-        levelImage={levelImage}
-      />
-      {userInfo.userId && <FeedbackComponent userId={userInfo.userId} />}
+      <div className={styles.background}>
+        <Header />
+        <UserInfoComponent
+          userInfo={userInfo}
+          levelImage={levelImage}
+        />
+        {userInfo.userId && <FeedbackComponent userId={userInfo.userId} />}
+      </div>
     </div>
   );
 }
