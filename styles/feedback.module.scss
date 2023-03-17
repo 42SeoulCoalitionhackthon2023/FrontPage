@@ -1,6 +1,9 @@
+@import "styles/common.scss";
+
 .feedbackWrap {
   @include Wrap;
   flex-direction: column;
+  color: $bastille;
 
   .radioBtn {
     display: flex;
@@ -20,9 +23,9 @@
         display: none;
       }
       :checked + .radioBtn {
-        border: solid 1.5px #2678f3;
+        border: solid 1.5px $blue;
         border-radius: 10px;
-        color: #2678f3;
+        color: $blue;
       }
       .radioBtn {
         display: flex;
@@ -30,7 +33,7 @@
         align-items: center;
         width: 2rem;
         height: 1.2rem;
-        border: 1.5px solid black;
+        border: 1.5px solid $bastille;
         border-radius: 10px;
         text-align: center;
         cursor: pointer;
@@ -54,9 +57,9 @@
       }
     }
     :checked + .subjectBtn {
-      border: solid 1.5px #2678f3;
+      border: solid 1.5px $blue;
       border-radius: 10px;
-      color: #2678f3;
+      color: $blue;
     }
     .subjectBtn {
       display: flex;
@@ -64,7 +67,7 @@
       align-items: center;
       padding: 0 0.5rem;
       height: 1.2rem;
-      border: 1.5px solid black;
+      border: 1.5px solid $bastille;
       border-radius: 10px;
       margin-right: 1rem;
       text-align: center;
@@ -91,7 +94,7 @@
       width: 5rem;
       height: 1.6rem;
       border-radius: 2rem;
-      background: lightblue;
+      background: #45d811;
       color: white;
       margin-left: 1rem;
       cursor: pointer;
@@ -102,6 +105,7 @@
         font-size: 1rem;
         font-weight: 600;
         transform: translate(0, -50%);
+        margin-top: 0.1rem;
       }
     }
   }
@@ -118,7 +122,7 @@
   }
 
   .toggle:checked ~ .toggleSwitch {
-    background: red;
+    background: $blue;
     .toggleText {
       position: absolute;
       top: 50%;
@@ -139,12 +143,15 @@
 
   .feedbackLogWrap {
     padding: 0 1rem;
+    max-height: 28rem;
+    overflow-y: scroll;
 
     .feedbackLog {
       padding: 0 0.5rem;
       border: 1.5px solid #e5e5e5;
       border-radius: 10px;
       background-color: #edeff2;
+      margin-bottom: 1rem;
     }
   }
 }

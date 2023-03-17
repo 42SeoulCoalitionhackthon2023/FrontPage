@@ -1,8 +1,22 @@
 import Head from "next/head";
+import { useEffect } from "react";
 import { BsSearch } from "react-icons/bs";
 import styles from "styles/Home.module.scss";
 
 export default function Home() {
+  const getHandler = async () => {
+    try {
+      const res = await await fetch(`http://13.209.130.135/test2`);
+      console.log(res);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    getHandler();
+  }, []);
+
   return (
     <>
       <Head>
