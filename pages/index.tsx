@@ -5,10 +5,10 @@ import { BsSearch } from "react-icons/bs";
 import styles from "styles/Home.module.scss";
 
 export default function Home() {
-  const [intraId, setIntraId] = useState<string>("");
+  const [intraId, setIntraId] = useState("");
 
-  const inputHandler = (e) => {
-    setIntraId(e.target);
+  const inputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setIntraId(e.target.value);
   };
 
   return (
@@ -27,6 +27,7 @@ export default function Home() {
             <BsSearch className={styles.searchIcon} />
             <input
               type="text"
+              value={intraId}
               onChange={inputHandler}
             />
           </div>
