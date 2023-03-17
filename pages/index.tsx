@@ -7,7 +7,9 @@ import Title from "../components/Title";
 export default function Home() {
   const getHandler = async () => {
     try {
-      const res = await (await fetch(`https://13.209.130.135/test3`)).json();
+      const res = await (
+        await fetch(`https://api.evaluation.42seoul.link/test3`)
+      ).json();
       console.log(res);
       console.log(res.data);
     } catch (err) {
