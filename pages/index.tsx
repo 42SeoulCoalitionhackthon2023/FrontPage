@@ -1,7 +1,8 @@
 import Head from "next/head";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { BsSearch } from "react-icons/bs";
 import styles from "styles/Home.module.scss";
+import Title from "../components/Title";
 
 export default function Home() {
   const getHandler = async () => {
@@ -26,10 +27,12 @@ export default function Home() {
       <main className={styles.pageWrap}>
         <div className={styles.contentWrap}>
           <div className={styles.header}>
-            <h1>
-              15 Minutes <br />
-              Is Enough!
-            </h1>
+            <div className={styles.title}>
+              <Title
+                width={200}
+                height={100}
+              />
+            </div>
           </div>
           <div className={styles.searchBar}>
             <BsSearch className={styles.searchIcon} />
