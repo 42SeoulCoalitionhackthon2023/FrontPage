@@ -1,4 +1,3 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import Feedback from "../components/Feedback";
 import Header from "../components/Header";
@@ -10,6 +9,7 @@ import levelImage2 from "public/image/2.png";
 import levelImage3 from "public/image/3.png";
 import levelImage4 from "public/image/4.png";
 import { StaticImageData } from "next/image";
+import instance from "../axios";
 
 type UserInfo = {
   intraId: string;
@@ -37,10 +37,8 @@ export default function Detail() {
 
   const getBasicInfoHandler = async () => {
     try {
-      const res = await (
-        await fetch(`api.evaluation.42seoul.link/user/susong`)
-      ).json();
-      setUserInfo(res.data);
+      const res = await instance.get("/user/susong");
+      setUserInfo(res?.data);
       if (userInfo.ePoint <= LEVELZERO) {
         setUserInfo({ ...userInfo, levelImage: levelImage0 });
       } else if (userInfo.ePoint <= LEVELONE) {
