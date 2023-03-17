@@ -37,7 +37,7 @@ export default function Detail() {
 
   const getBasicInfoHandler = async () => {
     try {
-      const res = await await (
+      const res = await (
         await fetch(`api.evaluation.42seoul.link/user/susong`)
       ).json();
       setUserInfo(res.data);
