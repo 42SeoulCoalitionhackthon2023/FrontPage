@@ -1,6 +1,14 @@
 import Image from "next/image";
 import styles from "/styles/userInfo.module.scss";
 
+type UserInfo = {
+  intraId: string;
+  profileImage: string;
+  blackHole: number;
+  circle: number;
+  ePoint: number;
+};
+
 export default function UserInfo({ userInfo }) {
   const { intraId, profileImage, blackHole, circle, ePoint, levelImage } =
     userInfo;

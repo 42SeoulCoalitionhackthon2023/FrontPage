@@ -17,7 +17,7 @@ type UserInfo = {
   blackHole: number;
   circle: number;
   ePoint: number;
-  levelImage: StaticImageData;
+  //   levelImage: StaticImageData;
 };
 
 const LEVELZERO = 0;
@@ -32,24 +32,24 @@ export default function Detail() {
     blackHole: 0,
     circle: 0,
     ePoint: 0,
-    levelImage: levelImage0,
+    // levelImage: levelImage0,
   });
 
   const getBasicInfoHandler = async () => {
     try {
       const res = await instance.get("/user/susong");
       setUserInfo(res?.data);
-      if (userInfo.ePoint <= LEVELZERO) {
-        setUserInfo({ ...userInfo, levelImage: levelImage0 });
-      } else if (userInfo.ePoint <= LEVELONE) {
-        setUserInfo({ ...userInfo, levelImage: levelImage1 });
-      } else if (userInfo.ePoint <= LEVELTWO) {
-        setUserInfo({ ...userInfo, levelImage: levelImage2 });
-      } else if (userInfo.ePoint <= LEVELTHREE) {
-        setUserInfo({ ...userInfo, levelImage: levelImage3 });
-      } else {
-        setUserInfo({ ...userInfo, levelImage: levelImage4 });
-      }
+      //   if (userInfo.ePoint <= LEVELZERO) {
+      //     setUserInfo({ ...userInfo, levelImage: levelImage0 });
+      //   } else if (userInfo.ePoint <= LEVELONE) {
+      //     setUserInfo({ ...userInfo, levelImage: levelImage1 });
+      //   } else if (userInfo.ePoint <= LEVELTWO) {
+      //     setUserInfo({ ...userInfo, levelImage: levelImage2 });
+      //   } else if (userInfo.ePoint <= LEVELTHREE) {
+      //     setUserInfo({ ...userInfo, levelImage: levelImage3 });
+      //   } else {
+      //     setUserInfo({ ...userInfo, levelImage: levelImage4 });
+      //   }
     } catch (e) {
       console.error(e);
     }
