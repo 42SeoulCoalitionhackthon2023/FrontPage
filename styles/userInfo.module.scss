@@ -14,6 +14,7 @@
   margin-bottom: 1rem;
   color: $bastille;
   font-family: "HandFontT";
+  font-size: 1.5rem;
 
   .intraInfo {
     height: 10rem;
@@ -28,6 +29,7 @@
     .profileImg {
       display: flex;
       justify-content: center;
+      min-width: 3.5rem;
       height: 70%;
 
       .image {
