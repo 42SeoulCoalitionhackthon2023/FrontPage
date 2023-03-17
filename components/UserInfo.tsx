@@ -19,7 +19,8 @@ export default function UserInfoComponent({ userInfo, levelImage }: Props) {
 
   const today = new Date();
   const blackholeDate = new Date(blackhole);
-  const blackholeDay = blackholeDate.getDate() - today.getDate();
+  const differenceMs = blackholeDate.getTime() - today.getTime();
+  const blackholeDay = Math.floor(differenceMs / (1000 * 60 * 60 * 24));
 
   return (
     <div className={styles.userInfoWrap}>
