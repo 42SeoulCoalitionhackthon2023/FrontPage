@@ -10,13 +10,16 @@ import levelImage1 from "public/image/1.png";
 import levelImage2 from "public/image/2.png";
 import levelImage3 from "public/image/3.png";
 import levelImage4 from "public/image/4.png";
+import levelImage5 from "public/image/5.png";
 import { useRouter } from "next/router";
 import { UserInfo } from "../types";
 
-const LEVELZERO = 0;
-const LEVELONE = 50;
-const LEVELTWO = 70;
-const LEVELTHREE = 90;
+const LEVELZERO = 49;
+const LEVELONE = 72;
+const LEVELTWO = 80;
+const LEVELTHREE = 88;
+const LEVELFOUR = 91;
+const LEVELFIVE = 100;
 
 export default function Detail() {
   const router = useRouter();
@@ -36,16 +39,18 @@ export default function Detail() {
     try {
       const res = await instance.get(`/user/${intraId}`);
       setUserInfo(res?.data);
-      if (userInfo.level <= LEVELZERO) {
-        setLevelImage(levelImage0);
-      } else if (userInfo.level <= LEVELONE) {
+      if (userInfo.level >= LEVELZERO) {
         setLevelImage(levelImage1);
-      } else if (userInfo.level <= LEVELTWO) {
+      } else if (userInfo.level >= LEVELONE) {
         setLevelImage(levelImage2);
-      } else if (userInfo.level <= LEVELTHREE) {
+      } else if (userInfo.level >= LEVELTWO) {
         setLevelImage(levelImage3);
-      } else {
+      } else if (userInfo.level >= LEVELTHREE) {
         setLevelImage(levelImage4);
+      } else if (userInfo.level >= LEVELFOUR && userInfo.level < LEVELFIVE) {
+        setLevelImage(levelImage5);
+      } else {
+        setLevelImage(levelImage0);
       }
     } catch (e) {
       console.error(e);

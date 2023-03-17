@@ -14,6 +14,13 @@ type Props = {
   levelImage: StaticImageData;
 };
 
+const LEVELZERO = 49;
+const LEVELONE = 72;
+const LEVELTWO = 80;
+const LEVELTHREE = 88;
+const LEVELFOUR = 91;
+const LEVELFIVE = 100;
+
 export default function UserInfoComponent({ userInfo, levelImage }: Props) {
   const { intraId, image, blackhole, level } = userInfo;
 
@@ -65,7 +72,19 @@ export default function UserInfoComponent({ userInfo, levelImage }: Props) {
             height={100}
           />
         </div>
-        <div className={styles.ePoint}>E.Points: {level}점</div>
+        <div className={styles.ePoint}>{`${
+          level >= LEVELFIVE || level < LEVELZERO
+            ? "Not Human"
+            : level >= LEVELFOUR
+            ? "Sweet"
+            : level >= LEVELTHREE
+            ? "Umami"
+            : level >= LEVELTWO
+            ? "Sour"
+            : level >= LEVELONE
+            ? "Salty"
+            : "Bitter"
+        } (${level}%)`}</div>
       </div>
     </div>
   );
