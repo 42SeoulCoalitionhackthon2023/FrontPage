@@ -9,12 +9,12 @@ export type UserInfo = {
 export type Feedback = {
   corrector: string;
   corrected: string;
-  final_mark: number;
+  finalMark: number;
   comment: string;
   feedback: string;
   flag: boolean;
-  project_name: string;
-  created_at: string;
+  projectName: string;
+  createdAt: string;
 };
 
 export type Subject = {

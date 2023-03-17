@@ -1,7 +1,7 @@
 import instance from "axios";
 import React, { useEffect, useState } from "react";
 import styles from "/styles/feedback.module.scss";
-import { UserInfo, Feedback, Subject } from "types";
+import { Feedback, Subject } from "types";
 
 const circleTypes = [
   { id: "0", label: "써클" },
@@ -60,7 +60,7 @@ const circleFive = [
 
 const circleSix = [{ id: "6-0", label: "ft-transcendence" }];
 
-export default function Feedback({ userInfo }: { userInfo: UserInfo }) {
+export default function Feedback({ userId }: { userId: number }) {
   const [feedback, setFeedback] = useState<Feedback[]>([]);
   const [toggle, setToggle] = useState<boolean>(false);
   const [circleBtn, setCircleBtn] = useState<string>("0");
@@ -80,7 +80,7 @@ export default function Feedback({ userInfo }: { userInfo: UserInfo }) {
 
   const getFeedbackInfoHandler = async () => {
     try {
-      const res = await instance.get(`/comment/corrector=${userInfo.userId}`);
+      const res = await instance.get(`/comment/corrector=${userId}`);
       setFeedback(res?.data);
     } catch (e) {
       console.error(e);
@@ -187,18 +187,18 @@ export default function Feedback({ userInfo }: { userInfo: UserInfo }) {
               <div className={styles.text}>
                 <div className={styles.color1}>{`evaluated `}</div>{" "}
                 <div className={styles.color2}>{`${log.corrected} `}</div>
-                <div>{log.final_mark}%</div>
+                <div>{log.finalMark}%</div>
               </div>
               <div className={styles.text}>
                 <div className={styles.color1}>{`scheduled on `}</div>
                 <div className={styles.color2}>
-                  {new Date(log.created_at).toLocaleDateString("en-us", {
+                  {new Date(log.createdAt).toLocaleDateString("en-us", {
                     day: "numeric",
                     year: "numeric",
                     month: "long",
                   })}
                   {` `}
-                  {new Date(log.created_at).toLocaleTimeString()}
+                  {new Date(log.createdAt).toLocaleTimeString()}
                 </div>
               </div>
               <p>{log.comment}</p>

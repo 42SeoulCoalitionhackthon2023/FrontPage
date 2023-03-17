@@ -63,7 +63,7 @@ export default function Detail() {
         userInfo={userInfo}
         levelImage={levelImage}
       />
-      <Feedback userInfo={userInfo} />
+      {userInfo.userId && <Feedback userId={userId} />}
     </div>
   );
 }
