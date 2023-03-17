@@ -28,7 +28,7 @@ export default function UserInfoComponent({ userInfo, levelImage }: Props) {
         <div className={styles.intraId}>{intraId}</div>
         <div className={styles.profileImg}>
           <Image
-            src={`https://cdn.intra.42.fr/users/fef9c5bb0d419b4310cbe0c731774a18/small_susong.jpeg`}
+            src={image}
             alt="Profile Image"
             width="250"
             height="250"
