@@ -238,10 +238,18 @@ export default function Feedback() {
         {feedback.map((log, index) => {
           return (
             <div className={styles.feedbackLog}>
-              <p>
+              <div>
                 evaluated {log.corrected} {log.final_mark}%
-              </p>
-              <p>scheduled on {log.created_at}</p>
+              </div>
+              <div>
+                {new Date(log.created_at).toLocaleDateString("en-us", {
+                  day: "numeric",
+                  year: "numeric",
+                  month: "long",
+                  hour: "numeric",
+                  minute: "numeric",
+                })}
+              </div>
               <p>{log.comment}</p>
             </div>
           );
