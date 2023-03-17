@@ -2,10 +2,9 @@
 
 @mixin searchBar {
   border-radius: 0.6rem;
-  background: #edeff2;
+  background: white;
   font-size: 0.8rem;
-  border: 1px solid #e5e7eb;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
 }
 
 @mixin Wrap {
