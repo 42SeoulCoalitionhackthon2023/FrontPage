@@ -1,3 +1,4 @@
+import instance from "axios";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import styles from "/styles/feedback.module.scss";
@@ -75,50 +76,12 @@ const circleFive = [
 
 const circleSix = [{ id: "6-0", label: "ft-transcendence" }];
 
-export default function Feedback() {
+export default function Feedback({ intraId }: { intraId: string }) {
   const [feedback, setFeedback] = useState<Feedback[]>([]);
   const [toggle, setToggle] = useState<boolean>(false);
   const [circleBtn, setCircleBtn] = useState<string>("0");
   const [subjects, setSubjects] = useState<Subject[]>([]);
   const [subjectBtn, setSubjectBtn] = useState<string>("");
-
-  const sungwookFeedback = () => {
-    setFeedback([
-      {
-        corrector: "sungwook",
-        corrected: "wocheon",
-        final_mark: 100,
-        comment:
-          "어려운 문제만 나와서 저도 같이 긴장이 되었는데 정말 빠르게 잘 푸셔서 놀랐습니다. 네트워크쪽은 지식이 아예 없었는데 문제를 설명해주시는 것을 듣고 더 놀랐습니다. 이진법으로 바꿔서 문제를 풀어야하는 것으로 보이는데 문제도 빨리 푸시고 설명도 잘 해주셔서 조금이나마 배워갑니다 고생하셨어요!",
-        feedback: "good",
-        flag: true,
-        project_name: "ft_transcendence",
-        created_at: "2021-08-10T10:00:00.000Z",
-      },
-      {
-        corrector: "sungwook",
-        corrected: "wocheon",
-        final_mark: 100,
-        comment:
-          "어려운 문제만 나와서 저도 같이 긴장이 되었는데 정말 빠르게 잘 푸셔서 놀랐습니다. 네트워크쪽은 지식이 아예 없었는데 문제를 설명해주시는 것을 듣고 더 놀랐습니다. 이진법으로 바꿔서 문제를 풀어야하는 것으로 보이는데 문제도 빨리 푸시고 설명도 잘 해주셔서 조금이나마 배워갑니다 고생하셨어요!",
-        feedback: "good",
-        flag: true,
-        project_name: "ft_transcendence",
-        created_at: "2021-08-10T10:00:00.000Z",
-      },
-      {
-        corrector: "sungwook",
-        corrected: "wocheon",
-        final_mark: 100,
-        comment:
-          "어려운 문제만 나와서 저도 같이 긴장이 되었는데 정말 빠르게 잘 푸셔서 놀랐습니다. 네트워크쪽은 지식이 아예 없었는데 문제를 설명해주시는 것을 듣고 더 놀랐습니다. 이진법으로 바꿔서 문제를 풀어야하는 것으로 보이는데 문제도 빨리 푸시고 설명도 잘 해주셔서 조금이나마 배워갑니다 고생하셨어요!",
-        feedback: "good",
-        flag: true,
-        project_name: "ft_transcendence",
-        created_at: "2021-08-10T10:00:00.000Z",
-      },
-    ]);
-  };
 
   const circleHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCircleBtn(e.target.value);
@@ -131,18 +94,17 @@ export default function Feedback() {
     //ToDo : get요청 해당 과제 feedback 정보 받기
   };
 
-  //   const getFeedbackInfoHandler = async () => {
-  //     try {
-  //       const res = await axios.get("http://localhost:3000/api/feedback");
-  //       setFeedback(res.data);
-  //     } catch (e) {
-  //       console.error(e);
-  //     }
-  //   };
+  const getFeedbackInfoHandler = async () => {
+    try {
+      const res = await instance.get(`/comment/corrector=${intraId}`);
+      setFeedback(res.data);
+    } catch (e) {
+      console.error(e);
+    }
+  };
 
   useEffect(() => {
-    // getFeedbackInfoHandler();
-    sungwookFeedback();
+    getFeedbackInfoHandler();
   }, []);
 
   useEffect(() => {
