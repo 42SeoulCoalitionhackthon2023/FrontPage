@@ -1,16 +1,7 @@
 import Image from "next/image";
 import styles from "/styles/userInfo.module.scss";
 
-type UserInfo = {
-  intraId: string;
-  profileImage: string;
-  blackHole: number;
-  circle: number;
-  levelImage: string;
-  ePoint: string;
-};
-
-export default function UserInfo({ userInfo: userInfo }) {
+export default function UserInfo({ userInfo }) {
   return (
     <div className={styles.userInfoWrap}>
       <div className={styles.intraInfo}>

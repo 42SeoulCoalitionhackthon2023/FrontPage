@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "/styles/feedback.module.scss";
 
 type Feedback = {

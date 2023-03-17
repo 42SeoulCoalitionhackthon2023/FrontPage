@@ -16,24 +16,40 @@ type UserInfo = {
   profileImage: string;
   blackHole: number;
   circle: number;
-  levelImage: StaticImageData;
   ePoint: number;
+  levelImage: StaticImageData;
 };
+
+const LEVELZERO = 0;
+const LEVELONE = 50;
+const LEVELTWO = 70;
+const LEVELTHREE = 90;
 
 export default function Detail() {
   const [userInfo, setUserInfo] = useState<UserInfo>({
     intraId: "sungwook",
     profileImage: "",
-    blackHole: 128,
+    blackHole: 120,
     circle: 2,
-    levelImage: levelImage0,
     ePoint: 0,
+    levelImage: levelImage0,
   });
 
   const getBasicInfoHandler = async () => {
     try {
       const res = await axios.get("http://localhost:3000/api/userInfo");
       setUserInfo(res.data);
+      if (userInfo.ePoint <= LEVELZERO) {
+        setUserInfo({ ...userInfo, levelImage: levelImage0 });
+      } else if (userInfo.ePoint <= LEVELONE) {
+        setUserInfo({ ...userInfo, levelImage: levelImage1 });
+      } else if (userInfo.ePoint <= LEVELTWO) {
+        setUserInfo({ ...userInfo, levelImage: levelImage2 });
+      } else if (userInfo.ePoint <= LEVELTHREE) {
+        setUserInfo({ ...userInfo, levelImage: levelImage3 });
+      } else {
+        setUserInfo({ ...userInfo, levelImage: levelImage4 });
+      }
     } catch (e) {
       console.error(e);
     }
@@ -41,9 +57,6 @@ export default function Detail() {
 
   useEffect(() => {
     getBasicInfoHandler();
-    if (userInfo.ePoint === 0) {
-      setUserInfo({ ...userInfo, levelImage: levelImage0 });
-    }
   }, []);
 
   return (

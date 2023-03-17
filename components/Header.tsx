@@ -9,7 +9,9 @@ export default function Header() {
         Is Enough!
       </h1>
       <div className={styles.searchBar}>
-        <BsSearch className={styles.searchIcon} />
+        <div className={styles.searchIcon}>
+          <BsSearch />
+        </div>
         <input type="text" />
       </div>
     </div>
