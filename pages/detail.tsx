@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import instance from "../axios";
-import Feedback from "../components/Feedback";
+import FeedbackComponent from "../components/FeedbackComponent";
 import Header from "../components/Header";
 import styles from "styles/detail.module.scss";
 import UserInfoComponent from "../components/UserInfo";
@@ -63,7 +63,7 @@ export default function Detail() {
         userInfo={userInfo}
         levelImage={levelImage}
       />
-      {userInfo.userId && <Feedback userId={userInfo.userId} />}
+      {userInfo.userId && <FeedbackComponent userId={userInfo.userId} />}
     </div>
   );
 }
