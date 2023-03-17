@@ -6,7 +6,7 @@ import styles from "styles/Home.module.scss";
 export default function Home() {
   const getHandler = async () => {
     try {
-      const res = await await fetch(`http://13.209.130.135/test3`);
+      const res = await (await fetch(`http://13.209.130.135/test3`)).json();
       console.log(res);
     } catch (err) {
       console.log(err);
