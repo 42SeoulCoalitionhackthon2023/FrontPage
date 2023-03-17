@@ -29,6 +29,10 @@
       display: flex;
       justify-content: center;
       height: 70%;
+
+      .image {
+        border-radius: 50%;
+      }
     }
     .redTime {
       @include blackhole;
