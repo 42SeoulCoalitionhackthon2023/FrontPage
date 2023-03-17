@@ -19,7 +19,7 @@ export default function UserInfoComponent({ userInfo, levelImage }: Props) {
 
   const today = new Date();
   const blackholeDate = new Date(blackhole);
-  const blackholeDay = today.getDate() - blackholeDate.getDate();
+  const blackholeDay = blackholeDate.getDate() - today.getDate();
 
   return (
     <div className={styles.userInfoWrap}>
