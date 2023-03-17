@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
+import { Router, useRouter } from "next/router";
 import { useState } from "react";
 import { BsSearch } from "react-icons/bs";
 import styles from "styles/Home.module.scss";
@@ -11,6 +12,12 @@ export default function Home() {
     setIntraId(e.target.value);
   };
 
+  const router = useRouter();
+
+  const goHome = () => {
+    router.push("/");
+  };
+
   return (
     <>
       <Head>
@@ -19,7 +26,10 @@ export default function Home() {
       <main className={styles.pageWrap}>
         <div className={styles.contentWrap}>
           <div className={styles.header}>
-            <div className={styles.title}>
+            <div
+              className={styles.title}
+              onClick={goHome}
+            >
               15 Minutes <br /> is Enough!
             </div>
           </div>
