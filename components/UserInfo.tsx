@@ -1,49 +1,60 @@
 import Image from "next/image";
 import styles from "/styles/userInfo.module.scss";
+import { StaticImageData } from "next/image";
 
 type UserInfo = {
   intraId: string;
-  profileImage: string;
-  blackHole: number;
-  circle: number;
-  ePoint: number;
+  image: string;
+  blackhole: string;
+  level: number;
 };
 
-export default function UserInfo({ userInfo }) {
-  const { intraId, profileImage, blackHole, circle, ePoint, levelImage } =
-    userInfo;
+type Props = {
+  userInfo: UserInfo;
+  levelImage: StaticImageData;
+};
+
+export default function UserInfoComponent({ userInfo, levelImage }: Props) {
+  const { intraId, image, blackhole, level } = userInfo;
 
   const today = new Date();
-  const blackHoleDate = new Date(blackHole);
-  const blackHoleDay = today.getDate() - blackHoleDate.getDate();
+  const blackholeDate = new Date(blackhole);
+  const blackholeDay = today.getDate() - blackholeDate.getDate();
 
   return (
     <div className={styles.userInfoWrap}>
       <div className={styles.intraInfo}>
         <div className={styles.intraId}>{intraId}</div>
-        <div className={styles.profileImg}>{profileImage}</div>
+        <div className={styles.profileImg}>
+          <Image
+            src={image}
+            alt="Profile Image"
+            width="100"
+            height="100"
+          />
+        </div>
         <div
           className={
-            blackHoleDay < 0
+            blackholeDay < 0
               ? styles.blackTime
-              : blackHoleDay === 0
+              : blackholeDay === 0
               ? styles.redTime
-              : blackHoleDay < 28
+              : blackholeDay < 28
               ? styles.yellowTime
-              : blackHoleDay < 365
+              : blackholeDay < 365
               ? styles.greenTime
               : styles.blueTime
           }
         >
-          {blackHoleDay < 0
+          {blackholeDay < 0
             ? `Absorbed By BlackHole`
-            : blackHoleDay === 0
+            : blackholeDay === 0
             ? `A Few Hours Left`
-            : `${blackHoleDay} days left`}
+            : `${blackholeDay} days left`}
         </div>
       </div>
       <div className={styles.statInfo}>
-        <div className={styles.circle}>Circle: {circle}</div>
+        <div className={styles.circle}>Circle: {/* {circle} */}</div>
         <div className={styles.levelImg}>
           <Image
             src={levelImage}
@@ -52,7 +63,7 @@ export default function UserInfo({ userInfo }) {
             height={100}
           />
         </div>
-        <div className={styles.ePoint}>E.Points: {ePoint}점</div>
+        <div className={styles.ePoint}>E.Points: {level}점</div>
       </div>
     </div>
   );

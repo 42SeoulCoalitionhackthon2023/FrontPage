@@ -1,23 +1,21 @@
 import { useEffect, useState } from "react";
+import instance from "../axios";
 import Feedback from "../components/Feedback";
 import Header from "../components/Header";
-import UserInfo from "../components/UserInfo";
 import styles from "styles/detail.module.scss";
+import UserInfoComponent from "../components/UserInfo";
+import { StaticImageData } from "next/image";
 import levelImage0 from "public/image/0.png";
 import levelImage1 from "public/image/1.png";
 import levelImage2 from "public/image/2.png";
 import levelImage3 from "public/image/3.png";
 import levelImage4 from "public/image/4.png";
-import { StaticImageData } from "next/image";
-import instance from "../axios";
 
 type UserInfo = {
   intraId: string;
-  profileImage: string;
-  blackHole: number;
-  circle: number;
-  ePoint: number;
-  //   levelImage: StaticImageData;
+  image: string;
+  blackhole: string;
+  level: number;
 };
 
 const LEVELZERO = 0;
@@ -28,28 +26,28 @@ const LEVELTHREE = 90;
 export default function Detail() {
   const [userInfo, setUserInfo] = useState<UserInfo>({
     intraId: "",
-    profileImage: "",
-    blackHole: 0,
-    circle: 0,
-    ePoint: 0,
-    // levelImage: levelImage0,
+    image: "",
+    blackhole: "",
+    level: 0,
   });
+
+  const [levelImage, setLevelImage] = useState<StaticImageData>(levelImage0);
 
   const getBasicInfoHandler = async () => {
     try {
       const res = await instance.get("/user/susong");
       setUserInfo(res?.data);
-      //   if (userInfo.ePoint <= LEVELZERO) {
-      //     setUserInfo({ ...userInfo, levelImage: levelImage0 });
-      //   } else if (userInfo.ePoint <= LEVELONE) {
-      //     setUserInfo({ ...userInfo, levelImage: levelImage1 });
-      //   } else if (userInfo.ePoint <= LEVELTWO) {
-      //     setUserInfo({ ...userInfo, levelImage: levelImage2 });
-      //   } else if (userInfo.ePoint <= LEVELTHREE) {
-      //     setUserInfo({ ...userInfo, levelImage: levelImage3 });
-      //   } else {
-      //     setUserInfo({ ...userInfo, levelImage: levelImage4 });
-      //   }
+      if (userInfo.level <= LEVELZERO) {
+        setLevelImage(levelImage0);
+      } else if (userInfo.level <= LEVELONE) {
+        setLevelImage(levelImage1);
+      } else if (userInfo.level <= LEVELTWO) {
+        setLevelImage(levelImage2);
+      } else if (userInfo.level <= LEVELTHREE) {
+        setLevelImage(levelImage3);
+      } else {
+        setLevelImage(levelImage4);
+      }
     } catch (e) {
       console.error(e);
     }
@@ -57,12 +55,16 @@ export default function Detail() {
 
   useEffect(() => {
     getBasicInfoHandler();
+    console.log(userInfo);
   }, []);
 
   return (
     <div className={styles.pageWrap}>
       <Header />
-      <UserInfo userInfo={userInfo} />
+      <UserInfoComponent
+        userInfo={userInfo}
+        levelImage={levelImage}
+      />
       <Feedback />
     </div>
   );
