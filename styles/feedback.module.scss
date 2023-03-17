@@ -5,6 +5,21 @@
   flex-direction: column;
   color: $bastille;
 
+  .text {
+    display: flex;
+    color: $bastille;
+  }
+
+  .color1 {
+    color: $balihali;
+    margin-right: 0.3rem;
+  }
+
+  .color2 {
+    color: $wenge;
+    margin-right: 0.3rem;
+  }
+
   .radioBtn {
     display: flex;
   }

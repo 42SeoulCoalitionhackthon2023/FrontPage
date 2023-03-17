@@ -238,17 +238,22 @@ export default function Feedback() {
         {feedback.map((log, index) => {
           return (
             <div className={styles.feedbackLog}>
-              <div>
-                evaluated {log.corrected} {log.final_mark}%
+              <div className={styles.text}>
+                <div className={styles.color1}>{`evaluated `}</div>{" "}
+                <div className={styles.color2}>{`${log.corrected} `}</div>
+                <div>{log.final_mark}%</div>
               </div>
-              <div>
-                {new Date(log.created_at).toLocaleDateString("en-us", {
-                  day: "numeric",
-                  year: "numeric",
-                  month: "long",
-                  hour: "numeric",
-                  minute: "numeric",
-                })}
+              <div className={styles.text}>
+                <div className={styles.color1}>{`scheduled on `}</div>
+                <div className={styles.color2}>
+                  {new Date(log.created_at).toLocaleDateString("en-us", {
+                    day: "numeric",
+                    year: "numeric",
+                    month: "long",
+                  })}
+                  {` `}
+                  {new Date(log.created_at).toLocaleTimeString()}
+                </div>
               </div>
               <p>{log.comment}</p>
             </div>
