@@ -128,6 +128,7 @@ export default function Feedback() {
   const subjectHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const subjectId = e.target.value;
     setSubjectBtn(subjectId);
+    //ToDo : get요청 해당 과제 feedback 정보 받기
   };
 
   //   const getFeedbackInfoHandler = async () => {
@@ -162,6 +163,7 @@ export default function Feedback() {
     } else {
       setSubjects(circleSix);
     }
+    //ToDo : get요청 해당 써클 feedback 정보 받기
   }, [circleBtn]);
 
   return (
