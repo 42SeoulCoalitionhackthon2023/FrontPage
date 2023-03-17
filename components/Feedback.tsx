@@ -97,7 +97,7 @@ export default function Feedback({ userId }: { userId: number }) {
   const getFeedbackInfoHandler = async () => {
     try {
       const res = await instance.get(`/comment/corrector=${userId}`);
-      setFeedback(res.data);
+      setFeedback(res?.data);
     } catch (e) {
       console.error(e);
     }
