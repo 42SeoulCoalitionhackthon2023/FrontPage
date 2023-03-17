@@ -27,17 +27,17 @@ const LEVELTHREE = 90;
 
 export default function Detail() {
   const [userInfo, setUserInfo] = useState<UserInfo>({
-    intraId: "sungwook",
+    intraId: "",
     profileImage: "",
     blackHole: 0,
-    circle: 2,
+    circle: 0,
     ePoint: 0,
     levelImage: levelImage0,
   });
 
   const getBasicInfoHandler = async () => {
     try {
-      const res = await axios.get("http://localhost:3000/api/userInfo");
+      const res = await axios.get("api.evaluation.42seoul.link/user/susong");
       setUserInfo(res.data);
       if (userInfo.ePoint <= LEVELZERO) {
         setUserInfo({ ...userInfo, levelImage: levelImage0 });
