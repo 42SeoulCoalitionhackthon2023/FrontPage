@@ -29,7 +29,7 @@ export default function Detail() {
   const [userInfo, setUserInfo] = useState<UserInfo>({
     intraId: "sungwook",
     profileImage: "",
-    blackHole: 120,
+    blackHole: 0,
     circle: 2,
     ePoint: 0,
     levelImage: levelImage0,

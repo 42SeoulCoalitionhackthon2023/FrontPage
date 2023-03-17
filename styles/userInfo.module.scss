@@ -1,5 +1,11 @@
 @import "/styles/common.scss";
 
+@mixin blackhole {
+  display: flex;
+  justify-content: center;
+  height: 15%;
+}
+
 .userInfoWrap {
   @include Wrap;
   align-items: center;
@@ -22,10 +28,21 @@
       justify-content: center;
       height: 70%;
     }
-    .blackHole {
-      display: flex;
-      justify-content: center;
-      height: 15%;
+    .redTime {
+      @include blackhole;
+      color: rgb(238, 97, 114);
+    }
+    .yellowTime {
+      @include blackhole;
+      color: rgb(223, 149, 58);
+    }
+    .greenTime {
+      @include blackhole;
+      color: rgb(89, 209, 123);
+    }
+    .blueTime {
+      @include blackhole;
+      color: rgb(0, 186, 188);
     }
   }
 
