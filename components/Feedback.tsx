@@ -76,7 +76,7 @@ const circleFive = [
 
 const circleSix = [{ id: "6-0", label: "ft-transcendence" }];
 
-export default function Feedback({ intraId }: { intraId: string }) {
+export default function Feedback({ intraId }) {
   const [feedback, setFeedback] = useState<Feedback[]>([]);
   const [toggle, setToggle] = useState<boolean>(false);
   const [circleBtn, setCircleBtn] = useState<string>("0");
