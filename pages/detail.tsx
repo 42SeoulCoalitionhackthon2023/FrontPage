@@ -11,13 +11,7 @@ import levelImage2 from "public/image/2.png";
 import levelImage3 from "public/image/3.png";
 import levelImage4 from "public/image/4.png";
 import { useRouter } from "next/router";
-
-type UserInfo = {
-  intraId: string;
-  image: string;
-  blackhole: string;
-  level: number;
-};
+import { UserInfo } from "../types";
 
 const LEVELZERO = 0;
 const LEVELONE = 50;
@@ -68,7 +62,7 @@ export default function Detail() {
         userInfo={userInfo}
         levelImage={levelImage}
       />
-      <Feedback intraId={intraId} />
+      <Feedback intraId={intraId as string} />
     </div>
   );
 }
