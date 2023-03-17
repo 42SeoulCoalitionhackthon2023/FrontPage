@@ -1,5 +1,11 @@
 import Image from "next/image";
 import styles from "/styles/userInfo.module.scss";
+import levelImage0 from "public/image/0.png";
+import levelImage1 from "public/image/1.png";
+import levelImage2 from "public/image/2.png";
+import levelImage3 from "public/image/3.png";
+import levelImage4 from "public/image/4.png";
+import levelImage5 from "public/image/5.png";
 import { StaticImageData } from "next/image";
 
 type UserInfo = {
@@ -9,11 +15,6 @@ type UserInfo = {
   level: number;
 };
 
-type Props = {
-  userInfo: UserInfo;
-  levelImage: StaticImageData;
-};
-
 const LEVELZERO = 49;
 const LEVELONE = 72;
 const LEVELTWO = 80;
@@ -21,13 +22,30 @@ const LEVELTHREE = 88;
 const LEVELFOUR = 91;
 const LEVELFIVE = 100;
 
-export default function UserInfoComponent({ userInfo, levelImage }: Props) {
+export default function UserInfoComponent({
+  userInfo,
+}: {
+  userInfo: UserInfo;
+}) {
   const { intraId, image, blackhole, level } = userInfo;
 
   const today = new Date();
   const blackholeDate = new Date(blackhole);
   const differenceMs = blackholeDate.getTime() - today.getTime();
   const blackholeDay = Math.floor(differenceMs / (1000 * 60 * 60 * 24));
+
+  const levelImage: StaticImageData =
+    level >= LEVELFIVE || level < LEVELZERO
+      ? levelImage0
+      : level >= LEVELFOUR
+      ? levelImage5
+      : level >= LEVELTHREE
+      ? levelImage4
+      : level >= LEVELTWO
+      ? levelImage3
+      : level >= LEVELONE
+      ? levelImage2
+      : levelImage1;
 
   return (
     <div className={styles.userInfoWrap}>
