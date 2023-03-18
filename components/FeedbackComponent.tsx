@@ -2,7 +2,7 @@ import instance from "../axios";
 import React, { useCallback, useEffect, useState } from "react";
 import styles from "../styles/components/feedback.module.scss";
 import { Feedback, Subject } from "../utils/types";
-import { MdOutlineChangeCircle } from "react-icons/Md";
+import { MdOutlineChangeCircle } from "react-icons/md";
 
 const circleTypes = [
   { id: "0", label: "써클" },
@@ -67,7 +67,7 @@ export default function FeedbackComponent({ userId }: { userId: number }) {
   const [circleBtn, setCircleBtn] = useState<string>("0");
   const [subjects, setSubjects] = useState<Subject[]>([]);
   const [subjectBtn, setSubjectBtn] = useState<string>("");
-  const [changeComment, setChangeComment] = useState(-1);
+  const [changeComment, setChangeComment] = useState<number>(-1);
 
   const handleCommentClick = (index) => {
     if (changeComment === index) {
