@@ -14,7 +14,7 @@ const circleTypes = [
   { id: "7", label: "6" },
 ];
 
-const circleZero = [{ id: "0-0", label: "Libft" }];
+const circleZero = [{ id: "0-0", label: "libft" }];
 
 const circleOne = [
   { id: "get_next_line", label: "get_next_line" },
@@ -66,7 +66,6 @@ export default function FeedbackComponent({ userId }: { userId: number }) {
   const [circleBtn, setCircleBtn] = useState<string>("0");
   const [subjects, setSubjects] = useState<Subject[]>([]);
   const [subjectBtn, setSubjectBtn] = useState<string>("");
-  const [prevUserId, setPrevUserId] = useState<number>(0);
 
   const circleHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCircleBtn(e.target.value);
@@ -79,8 +78,6 @@ export default function FeedbackComponent({ userId }: { userId: number }) {
   };
 
   const getRecentFeedbackHandler = async () => {
-    if (prevUserId === userId) return;
-    setPrevUserId(userId);
     try {
       const res = await instance.get(
         `/comment/${toggle ? "corrected" : "corrector"}=${userId}`
