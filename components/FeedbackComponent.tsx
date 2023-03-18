@@ -1,5 +1,5 @@
 import instance from "../axios";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import styles from "../styles/components/feedback.module.scss";
 import { Feedback, Subject } from "../utils/types";
 
@@ -77,7 +77,7 @@ export default function FeedbackComponent({ userId }: { userId: number }) {
     setSubjectBtn(subjectId);
   };
 
-  const getRecentFeedbackHandler = async () => {
+  const getRecentFeedbackHandler = useCallback(async () => {
     try {
       const res = await instance.get(
         `/comment/${toggle ? "corrected" : "corrector"}=${userId}`
@@ -86,7 +86,7 @@ export default function FeedbackComponent({ userId }: { userId: number }) {
     } catch (e) {
       console.error(e);
     }
-  };
+  }, [userId, toggle]);
 
   //   const getCircleFeedbackHandler = async () => {
   //     try {
@@ -101,7 +101,7 @@ export default function FeedbackComponent({ userId }: { userId: number }) {
   //     }
   //   };
 
-  const getSubjectFeedbackHandler = async () => {
+  const getSubjectFeedbackHandler = useCallback(async () => {
     try {
       const res = await instance.get(
         `/comment/${toggle ? "corrected" : "corrector"}=${userId}/${subjectBtn}`
@@ -110,7 +110,7 @@ export default function FeedbackComponent({ userId }: { userId: number }) {
     } catch (e) {
       console.error(e);
     }
-  };
+  }, [subjectBtn, userId, toggle]);
 
   useEffect(() => {
     if (circleBtn === "0") {
