@@ -92,7 +92,7 @@ export default function FeedbackComponent({ userId }: { userId: number }) {
     } catch (e) {
       console.error(e);
     }
-  }, [userId, toggle]);
+  }, [userId, toggle, circleBtn]);
 
   const getSubjectFeedbackHandler = useCallback(async () => {
     if (!userId) return;
