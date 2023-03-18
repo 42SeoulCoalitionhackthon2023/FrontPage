@@ -1,10 +1,9 @@
 import SearchBar from "components/SearchBar";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import styles from "styles/Home.module.scss";
+import styles from "../styles/Home.module.scss";
 
 export default function Home() {
-
   const router = useRouter();
 
   const goHome = () => {
@@ -27,9 +26,8 @@ export default function Home() {
                 15 Minutes <br /> is Enough!
               </div>
             </div>
-			<SearchBar />
+            <SearchBar />
             <div className={styles.info}>
-
               <div className={styles.infoBtn}>설명서</div>
             </div>
           </div>
