@@ -115,6 +115,9 @@ export default function FeedbackComponent({ userId }: { userId: number }) {
   useEffect(() => {
     if (circleBtn === "0") {
       setSubjects([]);
+      getRecentFeedbackHandler();
+    } else if (subjectBtn) {
+      getSubjectFeedbackHandler();
     } else if (circleBtn === "1") {
       setSubjects(circleZero);
     } else if (circleBtn === "2") {
@@ -129,15 +132,6 @@ export default function FeedbackComponent({ userId }: { userId: number }) {
       setSubjects(circleFive);
     } else {
       setSubjects(circleSix);
-    }
-    // getCircleFeedbackHandler();
-  }, [circleBtn]);
-
-  useEffect(() => {
-    if (circleBtn === "0") {
-      getRecentFeedbackHandler();
-    } else if (subjectBtn) {
-      getSubjectFeedbackHandler();
     }
   }, [circleHandler, subjectHandler]);
 
