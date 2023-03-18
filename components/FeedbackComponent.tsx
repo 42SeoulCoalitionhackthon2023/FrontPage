@@ -38,7 +38,7 @@ const circleThree = [
 
 const circleFour = [
   { id: "cub3d", label: "cub3D" },
-  { id: "mini", label: "miniRT" },
+  { id: "minirt", label: "miniRT" },
   { id: "net_practice", label: "NetPractice" },
   { id: "cpp-00", label: "CPP_00" },
   { id: "cpp-01", label: "CPP_01" },
@@ -52,7 +52,7 @@ const circleFive = [
   { id: "cpp-06", label: "CPP_06" },
   { id: "cpp-07", label: "CPP_07" },
   { id: "cpp-08", label: "CPP_08" },
-  { id: "cpp-09", label: "CPP_09" },
+  { id: "cpp-module-09", label: "CPP_09" },
   { id: "webserv", label: "WebServ" },
   { id: "ft_irc", label: "ft_irc" },
   { id: "inception", label: "Inception" },
@@ -134,19 +134,19 @@ export default function FeedbackComponent({ userId }: { userId: number }) {
   }, [circleBtn]);
 
   useEffect(() => {
-    getRecentFeedbackHandler();
-  }, [userId]);
-
-  useEffect(() => {
-    getSubjectFeedbackHandler();
-  }, [subjectBtn]);
+    if (circleBtn === "0") {
+      getRecentFeedbackHandler();
+    } else if (subjectBtn) {
+      getSubjectFeedbackHandler();
+    }
+  }, [circleHandler, subjectHandler]);
 
   useEffect(() => {
     if (subjectBtn) {
       getSubjectFeedbackHandler();
     } /* else if (circleBtn !== "0") {
       getCircleFeedbackHandler();
-    }  */ else {
+    }  */ else if (circleBtn === "0") {
       getRecentFeedbackHandler();
     }
   }, [toggle]);
