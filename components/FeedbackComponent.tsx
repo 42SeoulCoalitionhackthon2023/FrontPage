@@ -80,11 +80,11 @@ export default function FeedbackComponent({ userId }: { userId: number }) {
 
   const getRecentFeedbackHandler = async () => {
     if (prevUserId === userId) return;
+    setPrevUserId(userId);
     try {
       const res = await instance.get(
         `/comment/${toggle ? "corrected" : "corrector"}=${userId}`
       );
-      setPrevUserId(userId);
       setFeedback(res?.data);
     } catch (e) {
       console.error(e);
