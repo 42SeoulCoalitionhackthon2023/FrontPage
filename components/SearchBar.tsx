@@ -8,6 +8,11 @@ export default function SearchBar() {
   const [dropdown, setDropDown] = useState<boolean>(false);
   const searchBarRef = useRef<HTMLDivElement>(null);
 
+  const goDetail = () => {
+    setDropDown(false);
+    window.location.href = `/detail?intraId=${intraId}`;
+  };
+
   const inputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const keyword = e.target.value;
     setIntraId(keyword);
@@ -47,11 +52,12 @@ export default function SearchBar() {
           onFocus={() => setDropDown(true)}
         />
         {dropdown && (
-          <div className={styles.dropdown}>
+          <div
+            onClick={goDetail}
+            className={styles.dropdown}
+          >
             <div className={styles.dropdownText}>
-              <Link href={`/detail?intraId=${intraId}`}>
-                <div>{`검색 - ${intraId}`}</div>
-              </Link>
+              <div>{`검색 - ${intraId}`}</div>
             </div>
           </div>
         )}
