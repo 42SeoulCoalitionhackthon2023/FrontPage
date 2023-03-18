@@ -2,6 +2,7 @@ import instance from "../axios";
 import React, { useCallback, useEffect, useState } from "react";
 import styles from "../styles/components/feedback.module.scss";
 import { Feedback, Subject } from "../utils/types";
+import { MdOutlineChangeCircle } from "react-icons/Md";
 
 const circleTypes = [
   { id: "0", label: "써클" },
@@ -66,6 +67,15 @@ export default function FeedbackComponent({ userId }: { userId: number }) {
   const [circleBtn, setCircleBtn] = useState<string>("0");
   const [subjects, setSubjects] = useState<Subject[]>([]);
   const [subjectBtn, setSubjectBtn] = useState<string>("");
+  const [changeComment, setChangeComment] = useState(-1);
+
+  const handleCommentClick = (index) => {
+    if (changeComment === index) {
+      setChangeComment(-1);
+    } else {
+      setChangeComment(index);
+    }
+  };
 
   const circleHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const circleId = e.target.value;
@@ -224,27 +234,67 @@ export default function FeedbackComponent({ userId }: { userId: number }) {
                 className={styles.feedbackLog}
               >
                 <div className={styles.text}>
-                  <div className={styles.color1}>{`evaluated `}</div>{" "}
-                  <div className={styles.color2}>{`${log.corrected} `}</div>
-                  <div>{log.finalMark}%</div>
+                  <div className={styles.color1}>
+                    {changeComment === index ? `평가자: ` : `피평가자: `}
+                  </div>{" "}
+                  <div className={styles.color2}>
+                    {changeComment === index
+                      ? `${log.corrector} `
+                      : `${log.corrected} `}
+                  </div>
+                  <div
+                    className={styles.commentBtn}
+                    onClick={() => handleCommentClick(index)}
+                  >
+                    <MdOutlineChangeCircle
+                      style={{ marginBottom: "0.2rem" }}
+                      size="15"
+                    />
+                  </div>
                 </div>
                 <div className={styles.text}>
-                  <div className={styles.color1}>{`scheduled on `}</div>
+                  <div className={styles.color1}>{`날짜: `}</div>
                   <div className={styles.color2}>
-                    {new Date(log.createdAt).toLocaleDateString("en-us", {
+                    {new Date(log.createdAt).toLocaleDateString("kr-KR", {
                       day: "numeric",
                       year: "numeric",
                       month: "long",
                     })}
                     {` `}
-                    {new Date(log.createdAt).toLocaleTimeString()}
+                    {new Date(log.createdAt)
+                      .toLocaleTimeString()
+                      .split(":")
+                      .slice(0, 2)
+                      .join(":")}
                   </div>
                 </div>
                 <div className={styles.text}>
                   <div className={styles.color1}>{`과제: `}</div>
                   <div className={styles.color2}>{log.projectName}</div>
+                  <div className={styles.score}>{`점수:`}</div>
+                  <div
+                    className={
+                      log.finalMark > 79 ? styles.color3 : styles.color4
+                    }
+                  >
+                    {log.finalMark}%
+                  </div>
                 </div>
-                <p>{log.comment}</p>
+                {changeComment === index ? (
+                  <>
+                    <div
+                      style={{ marginTop: "0.5rem" }}
+                    >{`${log.corrected} :`}</div>
+                    <div>{log.feedback}</div>
+                  </>
+                ) : (
+                  <>
+                    <div
+                      style={{ marginTop: "0.5rem" }}
+                    >{`${log.corrector} :`}</div>
+                    <div>{log.comment}</div>
+                  </>
+                )}
               </div>
             );
           })

@@ -21,6 +21,19 @@
     margin-right: 0.3rem;
   }
 
+  .color3 {
+    color: green;
+  }
+
+  .color4 {
+    color: red;
+  }
+
+  .score {
+    margin-left: 1rem;
+    margin-right: 0.5rem;
+  }
+
   .radioBtn {
     display: flex;
   }
@@ -161,6 +174,7 @@
   }
 
   .feedbackLogWrap {
+    display: relative;
     padding: 0 1rem;
     max-height: 28rem;
     overflow-y: scroll;
@@ -171,6 +185,15 @@
       background-color: white;
       margin-bottom: 1rem;
       font-size: 1.5rem;
+
+      .commentBtn {
+        display: absolute;
+        height: 1.5rem;
+        width: 2rem;
+        border-radius: 0.5rem;
+        margin-top: 0.2rem;
+        cursor: pointer;
+      }
     }
     .blankFeedback {
       display: flex;
