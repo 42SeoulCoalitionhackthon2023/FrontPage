@@ -241,7 +241,8 @@ export default function FeedbackComponent({ userId }: { userId: number }) {
                   </div>
                 </div>
                 <div className={styles.text}>
-                  <div className={styles.color2}>과제: {log.projectName}</div>
+                  <div className={styles.color1}>{`과제: `}</div>
+                  <div className={styles.color2}>{log.projectName}</div>
                 </div>
                 <p>{log.comment}</p>
               </div>
