@@ -133,7 +133,7 @@ export default function FeedbackComponent({ userId }: { userId: number }) {
     } else {
       setSubjects(circleSix);
     }
-  }, [circleHandler, subjectHandler]);
+  }, []);
 
   useEffect(() => {
     if (subjectBtn) {
