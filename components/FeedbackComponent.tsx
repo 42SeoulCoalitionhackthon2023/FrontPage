@@ -239,9 +239,9 @@ export default function FeedbackComponent({ userId }: { userId: number }) {
                     {` `}
                     {new Date(log.createdAt).toLocaleTimeString()}
                   </div>
-                  <div className={styles.text}>
-                    <div className={styles.color2}>과제: {log.projectName}</div>
-                  </div>
+                </div>
+                <div className={styles.text}>
+                  <div className={styles.color2}>과제: {log.projectName}</div>
                 </div>
                 <p>{log.comment}</p>
               </div>
