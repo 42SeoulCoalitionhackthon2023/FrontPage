@@ -51,6 +51,11 @@ export default function SearchBar() {
           value={intraId}
           onChange={inputHandler}
           onFocus={() => setDropDown(true)}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              goDetail();
+            }
+          }}
         />
         {dropdown && (
           <div
