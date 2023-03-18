@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
 import { BsSearch } from "react-icons/bs";
 import styles from "/styles/components/searchbar.module.scss";
@@ -7,10 +7,11 @@ export default function SearchBar() {
   const [intraId, setIntraId] = useState<string>("");
   const [dropdown, setDropDown] = useState<boolean>(false);
   const searchBarRef = useRef<HTMLDivElement>(null);
+  const router = useRouter();
 
   const goDetail = () => {
     setDropDown(false);
-    window.location.href = `/detail?intraId=${intraId}`;
+    router.push(`/detail?intraId=${intraId}`);
   };
 
   const inputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
