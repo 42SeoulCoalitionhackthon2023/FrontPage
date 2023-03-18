@@ -136,7 +136,7 @@ useEffect(() => {
 }, [circleBtn]);
 
 useEffect(() => {
-  if (subjectBtn) {
+  if (subjectBtn && toggle) {
   getSubjectFeedbackHandler();
   } else {
   getRecentFeedbackHandler();
