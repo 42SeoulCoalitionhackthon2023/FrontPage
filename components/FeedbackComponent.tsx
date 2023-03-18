@@ -219,7 +219,7 @@ export default function FeedbackComponent({ userId }: { userId: number }) {
         </div>
       </div>
       <div className={styles.feedbackLogWrap}>
-        {feedback ? (
+        {feedback.length === 0 ? (
           feedback.map((log, index) => {
             return (
               <div className={styles.feedbackLog}>
