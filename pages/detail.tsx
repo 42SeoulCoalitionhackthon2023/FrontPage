@@ -20,6 +20,7 @@ export default function Detail() {
   });
 
   const getBasicInfoHandler = async () => {
+    if (!intraId) return;
     try {
       const res = await instance.get(`/user/${intraId}`);
       setUserInfo(res?.data);
