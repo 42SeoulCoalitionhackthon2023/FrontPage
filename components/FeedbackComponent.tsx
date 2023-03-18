@@ -14,7 +14,7 @@ const circleTypes = [
   { id: "7", label: "6" },
 ];
 
-const circleZero = [{ id: "0-0", label: "libft" }];
+const circleZero = [{ id: "libft", label: "Libft" }];
 
 const circleOne = [
   { id: "get_next_line", label: "get_next_line" },

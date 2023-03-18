@@ -1,7 +1,6 @@
 import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
 import { BsSearch } from "react-icons/bs";
-import { useSetRecoilState } from "recoil";
 import styles from "../styles/components/searchbar.module.scss";
 
 export default function SearchBar() {
