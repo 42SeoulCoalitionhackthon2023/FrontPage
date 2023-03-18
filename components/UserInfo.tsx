@@ -6,6 +6,7 @@ import levelImage2 from "../public/image/2.png";
 import levelImage3 from "../public/image/3.png";
 import levelImage4 from "../public/image/4.png";
 import levelImage5 from "../public/image/5.png";
+import fallBackSrc from "../public/image/fallBackSrc.jpeg";
 import { StaticImageData } from "next/image";
 
 type UserInfo = {
@@ -52,13 +53,23 @@ export default function UserInfoComponent({
       <div className={styles.intraInfo}>
         <div className={styles.intraId}>{intraId}</div>
         <div className={styles.profileImg}>
-          <img
-            className={styles.image}
-            src={image}
-            alt="Profile Image"
-            width="110"
-            height="110"
-          />
+          {image ? (
+            <img
+              className={styles.image}
+              src={image}
+              alt="Profile Image"
+              width="110"
+              height="110"
+            />
+          ) : (
+            <Image
+              className={styles.image}
+              src={fallBackSrc}
+              alt="Profile Image"
+              width="110"
+              height="110"
+            />
+          )}
         </div>
         <div
           className={
