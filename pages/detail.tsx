@@ -7,10 +7,10 @@ import UserInfoComponent from "../components/UserInfo";
 import { useRouter } from "next/router";
 import { UserInfo } from "../utils/types";
 
+
 export default function Detail() {
   const router = useRouter();
   const { intraId } = router.query;
-
   const [userInfo, setUserInfo] = useState<UserInfo>({
     userId: 0,
     intraId: "",

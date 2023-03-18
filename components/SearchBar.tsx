@@ -1,6 +1,8 @@
 import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
 import { BsSearch } from "react-icons/bs";
+import { useSetRecoilState } from "recoil";
+import { firstLoadState } from "../utils/recoil";
 import styles from "../styles/components/searchbar.module.scss";
 
 export default function SearchBar() {
@@ -8,9 +10,11 @@ export default function SearchBar() {
   const [dropdown, setDropDown] = useState<boolean>(false);
   const searchBarRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
+  const setFirstLoad = useSetRecoilState(firstLoadState);
 
   const goDetail = () => {
     setDropDown(false);
+    setFirstLoad(true);
     router.push(`/detail?intraId=${intraId}`);
   };
 

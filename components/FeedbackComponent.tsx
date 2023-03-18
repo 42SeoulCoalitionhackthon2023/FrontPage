@@ -2,6 +2,8 @@ import instance from "../axios";
 import React, { useEffect, useState } from "react";
 import styles from "../styles/components/feedback.module.scss";
 import { Feedback, Subject } from "../utils/types";
+import { useRecoilState } from "recoil";
+import { firstLoadState } from "../utils/recoil";
 
 const circleTypes = [
   { id: "0", label: "써클" },
@@ -66,15 +68,18 @@ export default function FeedbackComponent({ userId }: { userId: number }) {
   const [circleBtn, setCircleBtn] = useState<string>("0");
   const [subjects, setSubjects] = useState<Subject[]>([]);
   const [subjectBtn, setSubjectBtn] = useState<string>("");
+  const [firstLoad, setFirstLoad] = useRecoilState(firstLoadState);
 
   const circleHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCircleBtn(e.target.value);
     setSubjectBtn("");
+    setFirstLoad(true);
   };
 
   const subjectHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const subjectId = e.target.value;
     setSubjectBtn(subjectId);
+    setFirstLoad(true);
   };
 
   const getRecentFeedbackHandler = async () => {
@@ -113,41 +118,53 @@ export default function FeedbackComponent({ userId }: { userId: number }) {
   };
 
   useEffect(() => {
-    getRecentFeedbackHandler();
-  }, [userId]);
-
-  useEffect(() => {
-    if (circleBtn === "0") {
-      setSubjects([]);
-    } else if (circleBtn === "1") {
-      setSubjects(circleZero);
-    } else if (circleBtn === "2") {
-      setSubjects(circleOne);
-    } else if (circleBtn === "3") {
-      setSubjects(circleTwo);
-    } else if (circleBtn === "4") {
-      setSubjects(circleThree);
-    } else if (circleBtn === "5") {
-      setSubjects(circleFour);
-    } else if (circleBtn === "6") {
-      setSubjects(circleFive);
-    } else {
-      setSubjects(circleSix);
+    if (firstLoad) {
+      if (circleBtn === "0") {
+        setSubjects([]);
+      } else if (circleBtn === "1") {
+        setSubjects(circleZero);
+      } else if (circleBtn === "2") {
+        setSubjects(circleOne);
+      } else if (circleBtn === "3") {
+        setSubjects(circleTwo);
+      } else if (circleBtn === "4") {
+        setSubjects(circleThree);
+      } else if (circleBtn === "5") {
+        setSubjects(circleFour);
+      } else if (circleBtn === "6") {
+        setSubjects(circleFive);
+      } else {
+        setSubjects(circleSix);
+      }
+      // getCircleFeedbackHandler();
+      setFirstLoad(false);
     }
-    // getCircleFeedbackHandler();
   }, [circleBtn]);
 
   useEffect(() => {
-    getSubjectFeedbackHandler();
+    if (firstLoad) {
+      getRecentFeedbackHandler();
+      setFirstLoad(false);
+    }
+  }, [userId]);
+
+  useEffect(() => {
+    if (firstLoad) {
+      getSubjectFeedbackHandler();
+      setFirstLoad(false);
+    }
   }, [subjectBtn]);
 
   useEffect(() => {
-    if (subjectBtn) {
-      getSubjectFeedbackHandler();
-    } /* else if (circleBtn !== "0") {
+    if (firstLoad) {
+      if (subjectBtn) {
+        getSubjectFeedbackHandler();
+      } /* else if (circleBtn !== "0") {
       getCircleFeedbackHandler();
     }  */ else {
-      getRecentFeedbackHandler();
+        getRecentFeedbackHandler();
+      }
+      setFirstLoad(false);
     }
   }, [toggle]);
 
