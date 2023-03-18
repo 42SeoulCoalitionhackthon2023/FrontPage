@@ -1,7 +1,6 @@
 import SearchBar from "components/SearchBar";
 import Head from "next/head";
 import { useRouter } from "next/router";
-
 import styles from "styles/Home.module.scss";
 
 export default function Home() {

@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
-import instance from "../axios";
+import instance from "../utils/axios";
 import FeedbackComponent from "../components/FeedbackComponent";
 import Header from "../components/Header";
 import styles from "styles/detail.module.scss";
 import UserInfoComponent from "../components/UserInfo";
-
 import { useRouter } from "next/router";
-import { UserInfo } from "../types";
+import { UserInfo } from "../utils/types";
 
 export default function Detail() {
   const router = useRouter();
@@ -31,7 +30,7 @@ export default function Detail() {
 
   useEffect(() => {
     getBasicInfoHandler();
-  }, []);
+  }, [intraId]);
 
   return (
     <div className={styles.pageWrap}>

@@ -49,7 +49,7 @@ export default function SearchBar() {
         {dropdown && (
           <div className={styles.dropdown}>
             <div className={styles.dropdownText}>
-              <Link href={`/detail?intraId=${intraId}`}>
+              <Link href={{ pathname: "/detail", query: { intraId: intraId } }}>
                 <div>{`검색 - ${intraId}`}</div>
               </Link>
             </div>
