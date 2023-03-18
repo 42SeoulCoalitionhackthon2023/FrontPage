@@ -63,7 +63,11 @@ export default function SearchBar() {
             className={styles.dropdown}
           >
             <div className={styles.dropdownText}>
-              <div>{`검색 - ${intraId}`}</div>
+              <div>
+                {intraId
+                  ? `검색 - ${intraId}`
+                  : "인트라 아이디를 입력해주세요!"}
+              </div>
             </div>
           </div>
         )}
