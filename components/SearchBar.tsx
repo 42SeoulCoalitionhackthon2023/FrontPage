@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
 import { BsSearch } from "react-icons/bs";
 import styles from "/styles/components/searchbar.module.scss";
@@ -8,12 +7,6 @@ export default function SearchBar() {
   const [intraId, setIntraId] = useState<string>("");
   const [dropdown, setDropDown] = useState<boolean>(false);
   const searchBarRef = useRef<HTMLDivElement>(null);
-
-  const router = useRouter();
-
-  const goDetail = () => {
-    router.push(`/detail?intraId=${intraId}`);
-  };
 
   const inputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const keyword = e.target.value;
@@ -54,11 +47,12 @@ export default function SearchBar() {
           onFocus={() => setDropDown(true)}
         />
         {dropdown && (
-          <div
-            onClick={goDetail}
-            className={styles.dropdown}
-          >
-            <div className={styles.dropdownText}>검색 - "{intraId}"</div>
+          <div className={styles.dropdown}>
+            <div className={styles.dropdownText}>
+              <Link href={`/users/detail?intraId=${intraId}`}>
+                <div>{`검색 - ${intraId}`}</div>
+              </Link>
+            </div>
           </div>
         )}
       </div>
