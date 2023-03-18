@@ -30,6 +30,7 @@
     flex-direction: column;
     align-items: stretch;
     min-height: 1.5rem;
+    margin-top: 1rem;
 
     .radioBtns {
       display: flex;
@@ -65,7 +66,6 @@
     padding: 0 1rem;
     min-height: 2.8rem;
     margin-top: 1rem;
-    margin-bottom: 0.5rem;
     overflow-x: scroll;
 
     .subjectBtns {
