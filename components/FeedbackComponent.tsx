@@ -111,9 +111,9 @@ const getSubjectFeedbackHandler = async () => {
   }
 };
 
-useEffect(() => {
-  getRecentFeedbackHandler();
-}, []);
+// useEffect(() => {
+//   getRecentFeedbackHandler();
+// }, []);
 
 useEffect(() => {
   if (circleBtn === "0") {
