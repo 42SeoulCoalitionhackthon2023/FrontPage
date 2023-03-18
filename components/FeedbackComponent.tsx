@@ -229,7 +229,9 @@ export default function FeedbackComponent({ userId }: { userId: number }) {
                   <div>{log.finalMark}%</div>
                 </div>
                 <div className={styles.text}>
-                  <div className={styles.color1}>{`scheduled on `}</div>
+                  <div className={styles.color1}>
+                    {`scheduled on `} <br /> 과제: {log.projectName}
+                  </div>
                   <div className={styles.color2}>
                     {new Date(log.createdAt).toLocaleDateString("en-us", {
                       day: "numeric",
@@ -238,7 +240,6 @@ export default function FeedbackComponent({ userId }: { userId: number }) {
                     })}
                     {` `}
                     {new Date(log.createdAt).toLocaleTimeString()}
-                    <br /> 과제: {log.projectName}
                   </div>
                 </div>
                 <p>{log.comment}</p>
