@@ -7,8 +7,7 @@ import UserInfoComponent from "../components/UserInfo";
 import { useRouter } from "next/router";
 import { UserInfo } from "../utils/types";
 
-
-export default function Detail() {
+export default function Detail({ data }) {
   const router = useRouter();
   const { intraId } = router.query;
   const [userInfo, setUserInfo] = useState<UserInfo>({
@@ -19,18 +18,9 @@ export default function Detail() {
     level: 0,
   });
 
-  const getBasicInfoHandler = async () => {
-    try {
-      const res = await instance.get(`/user/${intraId}`);
-      setUserInfo(res?.data);
-    } catch (e) {
-      console.error(e);
-    }
-  };
-
   useEffect(() => {
-    getBasicInfoHandler();
-  }, [intraId]);
+    setUserInfo(data);
+  }, []);
 
   return (
     <div className={styles.pageWrap}>
@@ -41,4 +31,11 @@ export default function Detail() {
       </div>
     </div>
   );
+}
+
+export async function getServerSideProps({ intraId }) {
+  const res = await instance.get(`/user/${intraId}`);
+  const data = res.data;
+
+  return { props: { data } };
 }
