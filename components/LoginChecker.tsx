@@ -27,6 +27,12 @@ export default function LoginChecker({ children }: LoginCheckerProps) {
     }
   }, [logginKey]);
 
+  useEffect(() => {
+    if (localStorage.getItem("15ME-token")) {
+      setLoggedIn(true);
+    }
+  }, []);
+
   return loggedIn ? (
     <>{children}</>
   ) : (
