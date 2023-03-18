@@ -238,6 +238,7 @@ export default function FeedbackComponent({ userId }: { userId: number }) {
                     })}
                     {` `}
                     {new Date(log.createdAt).toLocaleTimeString()}
+                    <br /> 과제: {log.projectName}
                   </div>
                 </div>
                 <p>{log.comment}</p>
