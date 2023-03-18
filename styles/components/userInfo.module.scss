@@ -53,6 +53,10 @@
       @include blackhole;
       color: rgb(0, 186, 188);
     }
+    .blackTime {
+      @include blackhole;
+      color: black;
+    }
   }
 
   .statInfo {
