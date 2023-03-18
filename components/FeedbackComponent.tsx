@@ -113,9 +113,9 @@ export default function FeedbackComponent({ userId }: { userId: number }) {
     }
   };
 
-  // useEffect(() => {
-  //   getRecentFeedbackHandler();
-  // }, []);
+  useEffect(() => {
+    setToggle;
+  }, []);
 
   useEffect(() => {
     if (circleBtn === "0") {
@@ -138,12 +138,9 @@ export default function FeedbackComponent({ userId }: { userId: number }) {
   }, [circleBtn]);
 
   useEffect(() => {
-    if (!toggle) {
-      setToggle(1);
-    }
     if (subjectBtn && toggle) {
       getSubjectFeedbackHandler();
-    } else {
+    } else if (toggle) {
       getRecentFeedbackHandler();
     }
   }, [toggle, subjectBtn, userId]);
@@ -209,7 +206,7 @@ export default function FeedbackComponent({ userId }: { userId: number }) {
             className={styles.toggleSwitch}
           >
             <span className={styles.toggleText}>
-              {toggle ? "피평가" : "평가"}
+              {toggle === 2 ? "피평가" : "평가"}
             </span>
             <span className={styles.toggleButton}></span>
           </label>
