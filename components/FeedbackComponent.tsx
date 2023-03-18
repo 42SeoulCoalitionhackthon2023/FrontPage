@@ -14,7 +14,7 @@ const circleTypes = [
   { id: "7", label: "6" },
 ];
 
-const circleZero = [{ id: "0-0", label: "Libft" }];
+const circleZero = [{ id: "libft", label: "Libft" }];
 
 const circleOne = [
   { id: "get_next_line", label: "get_next_line" },
@@ -38,7 +38,7 @@ const circleThree = [
 
 const circleFour = [
   { id: "cub3d", label: "cub3D" },
-  { id: "mini", label: "miniRT" },
+  { id: "minirt", label: "miniRT" },
   { id: "net_practice", label: "NetPractice" },
   { id: "cpp-00", label: "CPP_00" },
   { id: "cpp-01", label: "CPP_01" },
@@ -52,7 +52,7 @@ const circleFive = [
   { id: "cpp-06", label: "CPP_06" },
   { id: "cpp-07", label: "CPP_07" },
   { id: "cpp-08", label: "CPP_08" },
-  { id: "cpp-09", label: "CPP_09" },
+  { id: "cpp-module-09", label: "CPP_09" },
   { id: "webserv", label: "WebServ" },
   { id: "ft_irc", label: "ft_irc" },
   { id: "inception", label: "Inception" },
@@ -70,77 +70,77 @@ export default function FeedbackComponent({ userId }: { userId: number }) {
 const circleHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
 setCircleBtn(e.target.value);
 setSubjectBtn("");
-getCircleFeedbackHandler(e.target.value);
+// getCircleFeedbackHandler(e.target.value);
 };
 
 const subjectHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
 const subjectId = e.target.value;
-setSubjectBtn(subjectId);
+  setSubjectBtn(subjectId);
 };
 
 const getRecentFeedbackHandler = async () => {
-try {
-const res = await instance.get(
-`/comment/${toggle ? "corrected" : "corrector"}=${userId}`
-);
-setFeedback(res?.data);
-} catch (e) {
-console.error(e);
-}
+  try {
+  const res = await instance.get(
+  `/comment/${toggle ? "corrected" : "corrector"}=${userId}`
+  );
+  setFeedback(res?.data);
+  } catch (e) {
+  console.error(e);
+  }
 };
 
-const getCircleFeedbackHandler = async (circleBtn: string) => {
-try {
-const res = await instance.get(
-`/comment/${ toggle ? "corrected" : "corrector" }=${userId}&circle=${circleBtn}`
-);
-setFeedback(res?.data);
-} catch (e) {
-console.error(e);
-}
-};
+// const getCircleFeedbackHandler = async (circleBtn: string) => {
+// try {
+// const res = await instance.get(
+// `/comment/${ toggle ? "corrected" : "corrector" }=${userId}&circle=${circleBtn}`
+// );
+// setFeedback(res?.data);
+// } catch (e) {
+// console.error(e);
+// }
+// };
 
 const getSubjectFeedbackHandler = async () => {
-try {
-const res = await instance.get(
-`/comment/${toggle ? "corrected" : "corrector"}=${userId}/${subjectBtn}`
-);
-setFeedback(res?.data);
-} catch (e) {
-console.error(e);
-}
+  try {
+    const res = await instance.get(
+    `/comment/${toggle ? "corrected" : "corrector"}=${userId}/${subjectBtn}`
+    );
+    setFeedback(res?.data);
+    } catch (e) {
+    console.error(e);
+  }
 };
 
 useEffect(() => {
-getRecentFeedbackHandler();
+  getRecentFeedbackHandler();
 }, []);
 
 useEffect(() => {
-if (circleBtn === "0") {
-setSubjects([]);
-} else if (circleBtn === "1") {
-setSubjects(circleZero);
-} else if (circleBtn === "2") {
-setSubjects(circleOne);
-} else if (circleBtn === "3") {
-setSubjects(circleTwo);
-} else if (circleBtn === "4") {
-setSubjects(circleThree);
-} else if (circleBtn === "5") {
-setSubjects(circleFour);
-} else if (circleBtn === "6") {
-setSubjects(circleFive);
-} else {
-setSubjects(circleSix);
-}
+  if (circleBtn === "0") {
+  setSubjects([]);
+  } else if (circleBtn === "1") {
+  setSubjects(circleZero);
+  } else if (circleBtn === "2") {
+  setSubjects(circleOne);
+  } else if (circleBtn === "3") {
+  setSubjects(circleTwo);
+  } else if (circleBtn === "4") {
+  setSubjects(circleThree);
+  } else if (circleBtn === "5") {
+  setSubjects(circleFour);
+  } else if (circleBtn === "6") {
+  setSubjects(circleFive);
+  } else {
+  setSubjects(circleSix);
+  }
 }, [circleBtn]);
 
 useEffect(() => {
-if (subjectBtn) {
-getSubjectFeedbackHandler();
-} else {
-getRecentFeedbackHandler();
-}
+  if (subjectBtn) {
+  getSubjectFeedbackHandler();
+  } else {
+  getRecentFeedbackHandler();
+  }
 }, [toggle, subjectBtn]);
 
 
