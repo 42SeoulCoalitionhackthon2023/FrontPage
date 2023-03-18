@@ -11,7 +11,6 @@ const nextConfig = {
     prependData: `@import "styles/_variables.scss"; @import "styles/_mixins.scss";`,
   },
   assetPrefix: "",
-  trailingSlash: true,
 };
 
 module.exports = nextConfig;

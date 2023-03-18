@@ -81,6 +81,7 @@ export default function FeedbackComponent({ userId }: { userId: number }) {
   };
 
   const getRecentFeedbackHandler = useCallback(async () => {
+    if (!userId) return;
     if (circleBtn !== "0") return;
     if (subjectBtn) return;
     try {
@@ -94,6 +95,8 @@ export default function FeedbackComponent({ userId }: { userId: number }) {
   }, [userId, toggle]);
 
   const getSubjectFeedbackHandler = useCallback(async () => {
+    if (!userId) return;
+    if (!subjectBtn) return;
     try {
       const res = await instance.get(
         `/comment/${toggle ? "corrected" : "corrector"}=${userId}/${subjectBtn}`

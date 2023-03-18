@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import instance from "../axios";
 import FeedbackComponent from "../components/FeedbackComponent";
 import Header from "../components/Header";
 import styles from "styles/detail.module.scss";
 import UserInfoComponent from "../components/UserInfo";
 import { useRouter } from "next/router";
 import { UserInfo } from "../utils/types";
+import instance from "../axios";
 
 export default function Detail() {
   const router = useRouter();
@@ -36,8 +36,12 @@ export default function Detail() {
     <div className={styles.pageWrap}>
       <div className={styles.background}>
         <Header />
-        {userInfo.level && <UserInfoComponent userInfo={userInfo} />}
-        {userInfo.userId && <FeedbackComponent userId={userInfo.userId} />}
+        {userInfo.userId !== 0 && (
+          <>
+            <UserInfoComponent userInfo={userInfo} />
+            <FeedbackComponent userId={userInfo.userId} />
+          </>
+        )}
       </div>
     </div>
   );
