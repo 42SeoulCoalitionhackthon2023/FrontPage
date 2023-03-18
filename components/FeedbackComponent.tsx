@@ -114,6 +114,10 @@ export default function FeedbackComponent({ userId }: { userId: number }) {
 
   useEffect(() => {
     getRecentFeedbackHandler();
+  }, [userId]);
+
+  useEffect(() => {
+    getRecentFeedbackHandler();
   }, []);
 
   useEffect(() => {
