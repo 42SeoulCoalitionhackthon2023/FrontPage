@@ -219,30 +219,34 @@ export default function FeedbackComponent({ userId }: { userId: number }) {
         </div>
       </div>
       <div className={styles.feedbackLogWrap}>
-        {feedback.map((log, index) => {
-          return (
-            <div className={styles.feedbackLog}>
-              <div className={styles.text}>
-                <div className={styles.color1}>{`evaluated `}</div>{" "}
-                <div className={styles.color2}>{`${log.corrected} `}</div>
-                <div>{log.finalMark}%</div>
-              </div>
-              <div className={styles.text}>
-                <div className={styles.color1}>{`scheduled on `}</div>
-                <div className={styles.color2}>
-                  {new Date(log.createdAt).toLocaleDateString("en-us", {
-                    day: "numeric",
-                    year: "numeric",
-                    month: "long",
-                  })}
-                  {` `}
-                  {new Date(log.createdAt).toLocaleTimeString()}
+        {feedback ? (
+          feedback.map((log, index) => {
+            return (
+              <div className={styles.feedbackLog}>
+                <div className={styles.text}>
+                  <div className={styles.color1}>{`evaluated `}</div>{" "}
+                  <div className={styles.color2}>{`${log.corrected} `}</div>
+                  <div>{log.finalMark}%</div>
                 </div>
+                <div className={styles.text}>
+                  <div className={styles.color1}>{`scheduled on `}</div>
+                  <div className={styles.color2}>
+                    {new Date(log.createdAt).toLocaleDateString("en-us", {
+                      day: "numeric",
+                      year: "numeric",
+                      month: "long",
+                    })}
+                    {` `}
+                    {new Date(log.createdAt).toLocaleTimeString()}
+                  </div>
+                </div>
+                <p>{log.comment}</p>
               </div>
-              <p>{log.comment}</p>
-            </div>
-          );
-        })}
+            );
+          })
+        ) : (
+          <div className={styles.blankFeedback}>피드백이 없습니다</div>
+        )}
       </div>
     </div>
   );
