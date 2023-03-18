@@ -62,87 +62,91 @@ const circleSix = [{ id: "ft_transcendence", label: "ft-transcendence" }];
 
 export default function FeedbackComponent({ userId }: { userId: number }) {
   const [feedback, setFeedback] = useState<Feedback[]>([]);
-  const [toggle, setToggle] = useState<boolean>(false);
+  const [toggle, setToggle] = useState<number>(0);
   const [circleBtn, setCircleBtn] = useState<string>("0");
   const [subjects, setSubjects] = useState<Subject[]>([]);
   const [subjectBtn, setSubjectBtn] = useState<string>("");
 
-const circleHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-setCircleBtn(e.target.value);
-setSubjectBtn("");
-// getCircleFeedbackHandler(e.target.value);
-};
+  const circleHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setCircleBtn(e.target.value);
+    setSubjectBtn("");
+    // getCircleFeedbackHandler(e.target.value);
+  };
 
-const subjectHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-const subjectId = e.target.value;
-  setSubjectBtn(subjectId);
-};
+  const subjectHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const subjectId = e.target.value;
+    setSubjectBtn(subjectId);
+  };
 
-const getRecentFeedbackHandler = async () => {
-  try {
-  const res = await instance.get(
-  `/comment/${toggle ? "corrected" : "corrector"}=${userId}`
-  );
-  setFeedback(res?.data);
-  } catch (e) {
-  console.error(e);
-  }
-};
-
-// const getCircleFeedbackHandler = async (circleBtn: string) => {
-// try {
-// const res = await instance.get(
-// `/comment/${ toggle ? "corrected" : "corrector" }=${userId}&circle=${circleBtn}`
-// );
-// setFeedback(res?.data);
-// } catch (e) {
-// console.error(e);
-// }
-// };
-
-const getSubjectFeedbackHandler = async () => {
-  try {
-    const res = await instance.get(
-    `/comment/${toggle ? "corrected" : "corrector"}=${userId}/${subjectBtn}`
-    );
-    setFeedback(res?.data);
+  const getRecentFeedbackHandler = async () => {
+    try {
+      const res = await instance.get(
+        `/comment/${toggle !== 2 ? "corrected" : "corrector"}=${userId}`
+      );
+      setFeedback(res?.data);
     } catch (e) {
-    console.error(e);
-  }
-};
+      console.error(e);
+    }
+  };
 
-// useEffect(() => {
-//   getRecentFeedbackHandler();
-// }, []);
+  // const getCircleFeedbackHandler = async (circleBtn: string) => {
+  // try {
+  // const res = await instance.get(
+  // `/comment/${ toggle ? "corrected" : "corrector" }=${userId}&circle=${circleBtn}`
+  // );
+  // setFeedback(res?.data);
+  // } catch (e) {
+  // console.error(e);
+  // }
+  // };
 
-useEffect(() => {
-  if (circleBtn === "0") {
-  setSubjects([]);
-  } else if (circleBtn === "1") {
-  setSubjects(circleZero);
-  } else if (circleBtn === "2") {
-  setSubjects(circleOne);
-  } else if (circleBtn === "3") {
-  setSubjects(circleTwo);
-  } else if (circleBtn === "4") {
-  setSubjects(circleThree);
-  } else if (circleBtn === "5") {
-  setSubjects(circleFour);
-  } else if (circleBtn === "6") {
-  setSubjects(circleFive);
-  } else {
-  setSubjects(circleSix);
-  }
-}, [circleBtn]);
+  const getSubjectFeedbackHandler = async () => {
+    try {
+      const res = await instance.get(
+        `/comment/${
+          toggle !== 2 ? "corrected" : "corrector"
+        }=${userId}/${subjectBtn}`
+      );
+      setFeedback(res?.data);
+    } catch (e) {
+      console.error(e);
+    }
+  };
 
-useEffect(() => {
-  if (subjectBtn && toggle) {
-  getSubjectFeedbackHandler();
-  } else {
-  getRecentFeedbackHandler();
-  }
-}, [toggle, subjectBtn, userId]);
+  // useEffect(() => {
+  //   getRecentFeedbackHandler();
+  // }, []);
 
+  useEffect(() => {
+    if (circleBtn === "0") {
+      setSubjects([]);
+    } else if (circleBtn === "1") {
+      setSubjects(circleZero);
+    } else if (circleBtn === "2") {
+      setSubjects(circleOne);
+    } else if (circleBtn === "3") {
+      setSubjects(circleTwo);
+    } else if (circleBtn === "4") {
+      setSubjects(circleThree);
+    } else if (circleBtn === "5") {
+      setSubjects(circleFour);
+    } else if (circleBtn === "6") {
+      setSubjects(circleFive);
+    } else {
+      setSubjects(circleSix);
+    }
+  }, [circleBtn]);
+
+  useEffect(() => {
+    if (!toggle) {
+      setToggle(1);
+    }
+    if (subjectBtn && toggle) {
+      getSubjectFeedbackHandler();
+    } else {
+      getRecentFeedbackHandler();
+    }
+  }, [toggle, subjectBtn, userId]);
 
   return (
     <div className={styles.feedbackWrap}>
@@ -197,7 +201,7 @@ useEffect(() => {
             type="checkbox"
             id="toggle"
             className={styles.toggle}
-            onChange={() => setToggle(!toggle)}
+            onChange={() => setToggle(toggle === 1 ? 2 : 1)}
             hidden
           />
           <label
