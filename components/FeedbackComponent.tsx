@@ -141,7 +141,7 @@ useEffect(() => {
   } else {
   getRecentFeedbackHandler();
   }
-}, [toggle, subjectBtn]);
+}, [toggle, subjectBtn, userId]);
 
 
   return (
