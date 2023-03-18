@@ -117,10 +117,6 @@ export default function FeedbackComponent({ userId }: { userId: number }) {
   }, [userId]);
 
   useEffect(() => {
-    getRecentFeedbackHandler();
-  }, []);
-
-  useEffect(() => {
     if (circleBtn === "0") {
       setSubjects([]);
     } else if (circleBtn === "1") {
