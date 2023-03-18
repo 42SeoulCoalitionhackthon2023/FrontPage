@@ -15,6 +15,7 @@
   color: $bastille;
   font-family: "HandFontT";
   font-size: 1.5rem;
+  font-weight: 700;
 
   .intraInfo {
     height: 10rem;
@@ -24,7 +25,6 @@
       display: flex;
       justify-content: center;
       height: 15%;
-      font-weight: 700;
       margin-bottom: 0.5rem;
     }
     .profileImg {
@@ -62,12 +62,12 @@
   .statInfo {
     height: 10rem;
     width: 50%;
+    font-weight: 700;
 
     .circle {
       display: flex;
       justify-content: center;
       height: 15%;
-      font-weight: 700;
       margin-bottom: 0.5rem;
     }
 
