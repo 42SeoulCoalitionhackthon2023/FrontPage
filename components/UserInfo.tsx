@@ -1,11 +1,11 @@
 import Image from "next/image";
-import styles from "/styles/components/userInfo.module.scss";
-import levelImage0 from "public/image/0.png";
-import levelImage1 from "public/image/1.png";
-import levelImage2 from "public/image/2.png";
-import levelImage3 from "public/image/3.png";
-import levelImage4 from "public/image/4.png";
-import levelImage5 from "public/image/5.png";
+import styles from "../styles/components/userInfo.module.scss";
+import levelImage0 from "../public/image/0.png";
+import levelImage1 from "../public/image/1.png";
+import levelImage2 from "../public/image/2.png";
+import levelImage3 from "../public/image/3.png";
+import levelImage4 from "../public/image/4.png";
+import levelImage5 from "../public/image/5.png";
 import { StaticImageData } from "next/image";
 
 type UserInfo = {

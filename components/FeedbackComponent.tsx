@@ -1,7 +1,7 @@
-import instance from "../utils/axios";
+import instance from "../axios";
 import React, { useEffect, useState } from "react";
-import styles from "/styles/components/feedback.module.scss";
-import { Feedback, Subject } from "utils/types";
+import styles from "../styles/components/feedback.module.scss";
+import { Feedback, Subject } from "../utils/types";
 
 const circleTypes = [
   { id: "0", label: "써클" },

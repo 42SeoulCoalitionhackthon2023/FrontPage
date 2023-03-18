@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import instance from "../utils/axios";
+import instance from "../axios";
 import FeedbackComponent from "../components/FeedbackComponent";
 import Header from "../components/Header";
 import styles from "styles/detail.module.scss";

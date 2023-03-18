@@ -1,4 +1,4 @@
-import axios from "utils/axios";
+import axios from "axios";
 
 const baseURL: any = `${process.env.NEXT_PUBLIC_SERVER_ENDPOINT}`;
 

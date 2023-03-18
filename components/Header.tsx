@@ -1,4 +1,4 @@
-import styles from "/styles/components/header.module.scss";
+import styles from "../styles/components/header.module.scss";
 import { useRouter } from "next/router";
 import SearchBar from "./SearchBar";
 
