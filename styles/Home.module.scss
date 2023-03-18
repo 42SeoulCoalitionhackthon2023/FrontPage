@@ -28,30 +28,6 @@
       }
     }
 
-    .searchBar {
-      @include searchBar;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: relative;
-      height: 3rem;
-      padding: 0 0.8rem;
-
-      .searchIcon {
-        margin-left: 0.5rem;
-        width: 1.5rem;
-        height: 1.5rem;
-      }
-
-      input {
-        all: unset;
-        margin-left: 0.3rem;
-        width: calc(100% - 4rem);
-        font-family: "HandFontT";
-        font-size: 1.7rem;
-      }
-    }
-
     .searchBtn {
       width: 3rem;
       height: 1.5rem;

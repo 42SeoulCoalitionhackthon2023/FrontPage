@@ -1,6 +1,6 @@
-import styles from "/styles/header.module.scss";
-import { BsSearch } from "react-icons/bs";
+import styles from "/styles/components/header.module.scss";
 import { useRouter } from "next/router";
+import SearchBar from "./SearchBar";
 
 export default function Header() {
   const router = useRouter();
@@ -17,11 +17,8 @@ export default function Header() {
       >
         15 Minutes <br /> is Enough!
       </div>
-      <div className={styles.searchBar}>
-        <div className={styles.searchIcon}>
-          <BsSearch />
-        </div>
-        <input type="text" />
+      <div className={styles.searchbar}>
+        <SearchBar />
       </div>
     </div>
   );

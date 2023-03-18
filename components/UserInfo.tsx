@@ -1,5 +1,5 @@
 import Image from "next/image";
-import styles from "/styles/userInfo.module.scss";
+import styles from "/styles/components/userInfo.module.scss";
 import levelImage0 from "public/image/0.png";
 import levelImage1 from "public/image/1.png";
 import levelImage2 from "public/image/2.png";

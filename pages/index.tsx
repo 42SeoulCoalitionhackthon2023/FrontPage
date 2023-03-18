@@ -1,16 +1,10 @@
+import SearchBar from "components/SearchBar";
 import Head from "next/head";
-import Link from "next/link";
-import { Router, useRouter } from "next/router";
-import { useState } from "react";
-import { BsSearch } from "react-icons/bs";
+import { useRouter } from "next/router";
+
 import styles from "styles/Home.module.scss";
 
 export default function Home() {
-  const [intraId, setIntraId] = useState("");
-
-  const inputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setIntraId(e.target.value);
-  };
 
   const router = useRouter();
 
@@ -34,18 +28,9 @@ export default function Home() {
                 15 Minutes <br /> is Enough!
               </div>
             </div>
-            <div className={styles.searchBar}>
-              <BsSearch className={styles.searchIcon} />
-              <input
-                type="text"
-                value={intraId}
-                onChange={inputHandler}
-              />
-            </div>
+			<SearchBar />
             <div className={styles.info}>
-              <div className={styles.searchBtn}>
-                <Link href={`/detail?intraId=${intraId}`}>검색하기</Link>
-              </div>
+
               <div className={styles.infoBtn}>설명서</div>
             </div>
           </div>
