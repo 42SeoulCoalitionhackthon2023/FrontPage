@@ -134,6 +134,10 @@ export default function FeedbackComponent({ userId }: { userId: number }) {
   }, [circleBtn]);
 
   useEffect(() => {
+    getRecentFeedbackHandler();
+  }, [userId]);
+
+  useEffect(() => {
     getSubjectFeedbackHandler();
   }, [subjectBtn]);
 
