@@ -68,8 +68,11 @@ export default function FeedbackComponent({ userId }: { userId: number }) {
   const [subjectBtn, setSubjectBtn] = useState<string>("");
 
   const circleHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setCircleBtn(e.target.value);
-    setSubjectBtn("");
+    const circleId = e.target.value;
+    setCircleBtn(circleId);
+    if (circleId === "0") {
+      setSubjectBtn("");
+    }
   };
 
   const subjectHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -78,6 +81,8 @@ export default function FeedbackComponent({ userId }: { userId: number }) {
   };
 
   const getRecentFeedbackHandler = useCallback(async () => {
+    if (circleBtn !== "0") return;
+    if (subjectBtn) return;
     try {
       const res = await instance.get(
         `/comment/${toggle ? "corrected" : "corrector"}=${userId}`
@@ -87,6 +92,25 @@ export default function FeedbackComponent({ userId }: { userId: number }) {
       console.error(e);
     }
   }, [userId, toggle]);
+
+  const getSubjectFeedbackHandler = useCallback(async () => {
+    try {
+      const res = await instance.get(
+        `/comment/${toggle ? "corrected" : "corrector"}=${userId}/${subjectBtn}`
+      );
+      setFeedback(res?.data);
+    } catch (e) {
+      console.error(e);
+    }
+  }, [subjectBtn, userId, toggle]);
+
+  useEffect(() => {
+    getRecentFeedbackHandler();
+  }, [getRecentFeedbackHandler]);
+
+  useEffect(() => {
+    getSubjectFeedbackHandler();
+  }, [getSubjectFeedbackHandler]);
 
   //   const getCircleFeedbackHandler = async () => {
   //     try {
@@ -100,17 +124,6 @@ export default function FeedbackComponent({ userId }: { userId: number }) {
   //       console.error(e);
   //     }
   //   };
-
-  const getSubjectFeedbackHandler = useCallback(async () => {
-    try {
-      const res = await instance.get(
-        `/comment/${toggle ? "corrected" : "corrector"}=${userId}/${subjectBtn}`
-      );
-      setFeedback(res?.data);
-    } catch (e) {
-      console.error(e);
-    }
-  }, [subjectBtn, userId, toggle]);
 
   useEffect(() => {
     if (circleBtn === "0") {
@@ -127,29 +140,10 @@ export default function FeedbackComponent({ userId }: { userId: number }) {
       setSubjects(circleFour);
     } else if (circleBtn === "6") {
       setSubjects(circleFive);
-    } else {
+    } else if (circleBtn === "7") {
       setSubjects(circleSix);
     }
-    // getCircleFeedbackHandler();
   }, [circleBtn]);
-
-  useEffect(() => {
-    getRecentFeedbackHandler();
-  }, [userId]);
-
-  useEffect(() => {
-    getSubjectFeedbackHandler();
-  }, [subjectBtn]);
-
-  useEffect(() => {
-    if (subjectBtn) {
-      getSubjectFeedbackHandler();
-    } /* else if (circleBtn !== "0") {
-      getCircleFeedbackHandler();
-    }  */ else {
-      getRecentFeedbackHandler();
-    }
-  }, [toggle]);
 
   return (
     <div className={styles.feedbackWrap}>
@@ -158,7 +152,7 @@ export default function FeedbackComponent({ userId }: { userId: number }) {
           {circleTypes.map((circle, index) => {
             return (
               <label
-                key={index}
+                key={circle.id}
                 htmlFor={circle.id}
               >
                 <input
@@ -179,7 +173,7 @@ export default function FeedbackComponent({ userId }: { userId: number }) {
             {subjects.map((subject, index) => {
               return (
                 <label
-                  key={index}
+                  key={subject.id}
                   htmlFor={subject.id}
                 >
                   <input
@@ -222,7 +216,10 @@ export default function FeedbackComponent({ userId }: { userId: number }) {
         {feedback[0] ? (
           feedback.map((log, index) => {
             return (
-              <div className={styles.feedbackLog}>
+              <div
+                key={log.pid}
+                className={styles.feedbackLog}
+              >
                 <div className={styles.text}>
                   <div className={styles.color1}>{`evaluated `}</div>{" "}
                   <div className={styles.color2}>{`${log.corrected} `}</div>

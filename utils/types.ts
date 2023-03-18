@@ -15,6 +15,7 @@ export type Feedback = {
   flag: boolean;
   projectName: string;
   createdAt: string;
+  pid: number;
 };
 
 export type Subject = {
