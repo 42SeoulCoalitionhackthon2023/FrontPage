@@ -73,7 +73,7 @@ export default function UserInfoComponent({
               : styles.blueTime
           }
         >
-          {blackhole
+          {!blackhole
             ? "Member"
             : blackholeDay < 0
             ? `Absorbed By BlackHole`
