@@ -8,6 +8,7 @@ import { UserInfo } from "../utils/types";
 import instance from "../axios";
 import { useSetRecoilState } from "recoil";
 import { errorState } from "utils/recoil";
+import ReactGA from 'react-ga';
 
 export default function Detail() {
   const router = useRouter();
@@ -34,6 +35,7 @@ export default function Detail() {
 
   useEffect(() => {
     getBasicInfoHandler();
+    ReactGA.pageview(router.pathname);
   }, [intraId]);
 
   return (
