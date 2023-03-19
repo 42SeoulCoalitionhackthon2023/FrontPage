@@ -2,6 +2,7 @@
   max-width: 50rem;
   min-height: calc(100vh - 8rem);
   margin: 0 auto;
+  font-family: "NanumSquareRound";
 
   .background {
     @include background;
@@ -21,15 +22,33 @@
     display: flex;
     justify-content: center;
     font-size: 3rem;
-    font-family: "HandFontT";
     margin-bottom: 2rem;
   }
 
   input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
     width: 20rem;
     height: 10rem;
     font-size: 5rem;
     border-radius: 15px;
-    font-family: "HandFontT";
+  }
+
+  .confirm {
+    all: unset;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 5rem;
+    height: 3rem;
+    cursor: pointer;
+    border: 1px solid black;
+    border-radius: 15px;
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    color: #2678f3;
+    background-color: white;
   }
 }

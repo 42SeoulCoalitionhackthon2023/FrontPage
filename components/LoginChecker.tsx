@@ -43,8 +43,13 @@ export default function LoginChecker({ children }: LoginCheckerProps) {
             value={logginKey}
             onChange={inputHandler}
           />
+          <button
+            className={styles.confirm}
+            onClick={finishHandler}
+          >
+            확인
+          </button>
         </div>
-        <button onClick={finishHandler}>확인</button>
       </div>
     </div>
   );
