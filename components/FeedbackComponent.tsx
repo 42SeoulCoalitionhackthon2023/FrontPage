@@ -167,7 +167,10 @@ export default function FeedbackComponent({ userId }: { userId: number }) {
   }, [circleBtn]);
 
   return (
-    <div className={styles.feedbackWrap}>
+    <div
+      className={`${styles.feedbackWrap}
+		${styles[fontBtn]}`}
+    >
       <div className={styles.radioWrap}>
         <div className={styles.radioBtns}>
           {circleTypes.map((circle, index) => {
@@ -213,7 +216,15 @@ export default function FeedbackComponent({ userId }: { userId: number }) {
         </div>
       </div>
       <div className={styles.toggleWrap}>
-        <div className={styles.feedbackTitle}>Feedback</div>
+        <div
+          className={
+            fontBtn === "rollingFont"
+              ? styles.feedbackTitleRolling
+              : styles.feedbackTitleHand
+          }
+        >
+          Feedback
+        </div>
         <div>
           <input
             type="checkbox"

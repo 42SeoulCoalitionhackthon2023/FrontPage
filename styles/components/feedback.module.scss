@@ -4,7 +4,6 @@
   @include Wrap;
   flex-direction: column;
   color: $bastille;
-  font-family: "HandFont";
 
   .text {
     display: flex;
@@ -49,7 +48,6 @@
       display: flex;
       align-items: center;
       justify-content: space-around;
-      font-size: 1.5rem;
       height: 1.5rem;
       input[type="radio"] {
         display: none;
@@ -83,7 +81,6 @@
 
     .subjectBtns {
       display: flex;
-      font-size: 1.5rem;
       input[type="radio"] {
         display: none;
       }
@@ -112,14 +109,6 @@
     align-items: center;
     margin-bottom: 1rem;
 
-    .feedbackTitle {
-      font-family: "HandFont";
-      font-size: 2rem;
-      font-weight: 600;
-      margin-left: 1rem;
-      margin-bottom: 0.2rem;
-    }
-
     .toggleSwitch {
       display: block;
       position: relative;
@@ -128,14 +117,15 @@
       border-radius: 2rem;
       background: #45d811;
       color: white;
-      margin-left: 1rem;
+      margin-left: 1.5rem;
       cursor: pointer;
       .toggleText {
         position: absolute;
-        top: 40%;
+        top: 55%;
         left: 50%;
-        font-size: 1.5rem;
-        font-weight: 800;
+        font-family: "NanoSquare";
+        font-weight: 500;
+        font-size: 1rem;
         transform: translate(0, -50%);
       }
     }
@@ -154,10 +144,13 @@
 
   .toggle:checked ~ .toggleSwitch {
     background: $blue;
+
     .toggleText {
+      font-family: "NanumSquare";
+      font-size: 1rem;
       position: absolute;
-      top: 40%;
-      left: 10%;
+      top: 55%;
+      left: 12%;
       transform: translate(0, -50%);
     }
   }
@@ -203,19 +196,6 @@
   }
 }
 
-.rollingFont {
-  font-family: "NanumSquare";
-  font-size: 1rem;
-  font-weight: 700;
-  line-height: 130%;
-}
-
-.handFont {
-  font-family: "HandFont";
-  font-size: 1.5rem;
-  font-weight: 900;
-}
-
 .fontBtns {
   display: flex;
   align-items: center;
@@ -244,4 +224,27 @@
     text-align: center;
     cursor: pointer;
   }
+}
+
+.feedbackTitleRolling {
+  font-family: "NanumSquare";
+  font-size: 1.5rem;
+  margin-left: 1rem;
+}
+
+.feedbackTitleHand {
+  font-family: "HandFont";
+  font-size: 3rem;
+  margin-left: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.rollingFont {
+  font-family: "NanumSquare";
+  font-size: 1rem;
+}
+
+.handFont {
+  font-family: "HandFont";
+  font-size: 1.5rem;
 }
