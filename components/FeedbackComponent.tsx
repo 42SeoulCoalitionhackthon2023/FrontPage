@@ -103,7 +103,7 @@ export default function FeedbackComponent({ userId }: { userId: number }) {
     setChangeComment(-1);
     try {
       const res = await instance.get(
-        `/user/comment/${toggle ? "corrected" : "corrector"}=${userId}`
+        `/comment/${toggle ? "corrected" : "corrector"}=${userId}`
       );
       setFeedback(res?.data);
     } catch (e) {
