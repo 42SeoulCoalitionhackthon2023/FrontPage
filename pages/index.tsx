@@ -1,9 +1,13 @@
 import SearchBar from "components/SearchBar";
 import Head from "next/head";
+import Image from "next/image";
 import { useRouter } from "next/router";
+import { useState } from "react";
 import styles from "../styles/Home.module.scss";
+import infoImage from "/public/image/info.png";
 
 export default function Home() {
+  const [info, setInfo] = useState<boolean>(false);
   const router = useRouter();
 
   const goHome = () => {
@@ -28,8 +32,23 @@ export default function Home() {
             </div>
             <SearchBar />
             <div className={styles.info}>
-              <div className={styles.infoBtn}>설명서</div>
+              <div
+                onClick={() => setInfo(!info)}
+                className={styles.infoBtn}
+              >
+                설명서
+              </div>
             </div>
+            {info && (
+              <div className={styles.infoImage}>
+                <Image
+                  src={infoImage}
+                  alt="Information Image"
+                  fill
+                  style={{ objectFit: "contain" }}
+                />
+              </div>
+            )}
           </div>
         </div>
       </main>
