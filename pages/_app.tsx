@@ -4,7 +4,7 @@ import { RecoilRoot } from "recoil";
 import ReactGA from 'react-ga'
 
 export default function App({ Component, pageProps }) {
-  ReactGA.initialize('G-H2JKMSJ03B')
+  ReactGA.initialize('G-632Z4VQM76')
   return (
     <>
       <RecoilRoot>
