@@ -22,9 +22,7 @@ export default function LoginChecker({ children }: LoginCheckerProps) {
       localStorage.setItem("15ME-token", logginKey);
       router.replace(`/`);
     }
-    if (localStorage.getItem("15ME-token")) {
-      setLoggedIn(true);
-    }
+    setLoggedIn(true);
   }, [logginKey]);
 
   useEffect(() => {
