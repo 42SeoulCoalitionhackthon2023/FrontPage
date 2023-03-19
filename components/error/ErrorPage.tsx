@@ -1,12 +1,15 @@
 import SearchBar from "components/SearchBar";
+import Image from "next/image";
 import { useRouter } from "next/router";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
 import { errorState } from "utils/recoil";
 import styles from "/styles/error.module.scss";
+import infoImage from "/public/image/info.png";
 
 export default function ErrorPage() {
   const [error, setError] = useRecoilState(errorState);
+  const [info, setInfo] = useState<boolean>(false);
   const router = useRouter();
 
   useEffect(() => {
@@ -37,8 +40,23 @@ export default function ErrorPage() {
                 <div className={styles.warning}>
                   존재하지 않는 아이디입니다!
                 </div>
-                <div className={styles.infoBtn}>설명서</div>
+                <div
+                  onClick={() => setInfo(!info)}
+                  className={styles.infoBtn}
+                >
+                  설명서
+                </div>
               </div>
+              {info && (
+                <div className={styles.infoImage}>
+                  <Image
+                    src={infoImage}
+                    alt="Information Image"
+                    fill
+                    style={{ objectFit: "contain" }}
+                  />
+                </div>
+              )}
             </div>
           </div>
         </div>

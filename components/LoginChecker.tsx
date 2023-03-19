@@ -17,13 +17,14 @@ export default function LoginChecker({ children }: LoginCheckerProps) {
     setLogginKey(keyword);
   };
 
-  useEffect(() => {
+  const finishHandler = () => {
     if (logginKey === "평가풍년") {
       localStorage.setItem("15ME-token", logginKey);
       router.replace(`/`);
       setLoggedIn(true);
     }
-  }, [logginKey]);
+    return;
+  };
 
   useEffect(() => {
     if (localStorage.getItem("15ME-token")) {
@@ -43,6 +44,7 @@ export default function LoginChecker({ children }: LoginCheckerProps) {
             onChange={inputHandler}
           />
         </div>
+        <button onClick={finishHandler}>확인</button>
       </div>
     </div>
   );
