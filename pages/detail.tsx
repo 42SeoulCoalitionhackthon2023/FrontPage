@@ -6,11 +6,12 @@ import UserInfoComponent from "../components/UserInfo";
 import { useRouter } from "next/router";
 import { UserInfo } from "../utils/types";
 import instance from "../axios";
+import { useSetRecoilState } from "recoil";
+import { errorState } from "utils/recoil";
 
 export default function Detail() {
   const router = useRouter();
   const { intraId } = router.query;
-
   const [userInfo, setUserInfo] = useState<UserInfo>({
     userId: 0,
     intraId: "",
@@ -18,6 +19,7 @@ export default function Detail() {
     blackhole: "",
     level: 0,
   });
+  const setError = useSetRecoilState(errorState);
 
   const getBasicInfoHandler = async () => {
     if (!intraId) return;
@@ -25,7 +27,7 @@ export default function Detail() {
       const res = await instance.get(`/user/${intraId}`);
       setUserInfo(res?.data);
     } catch (e) {
-      console.error(e);
+      setError(e.response.status.toString());
     }
   };
 

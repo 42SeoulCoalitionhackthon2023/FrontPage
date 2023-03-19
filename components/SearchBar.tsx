@@ -1,16 +1,20 @@
 import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
 import { BsSearch } from "react-icons/bs";
+import { useSetRecoilState } from "recoil";
+import { errorState } from "utils/recoil";
 import styles from "../styles/components/searchbar.module.scss";
 
 export default function SearchBar() {
   const [intraId, setIntraId] = useState<string>("");
   const [dropdown, setDropDown] = useState<boolean>(false);
+  const setError = useSetRecoilState(errorState);
   const searchBarRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
 
   const goDetail = () => {
     setDropDown(false);
+    setError("");
     router.push(`/detail?intraId=${intraId}`);
   };
 
