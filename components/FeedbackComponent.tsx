@@ -61,6 +61,11 @@ const circleFive = [
 
 const circleSix = [{ id: "ft_transcendence", label: "ft-transcendence" }];
 
+const fontSelect = [
+  { id: "rollingFont", label: "굴림" },
+  { id: "handFont", label: "손글씨" },
+];
+
 export default function FeedbackComponent({ userId }: { userId: number }) {
   const [feedback, setFeedback] = useState<Feedback[]>([]);
   const [toggle, setToggle] = useState<boolean>(false);
@@ -68,6 +73,7 @@ export default function FeedbackComponent({ userId }: { userId: number }) {
   const [subjects, setSubjects] = useState<Subject[]>([]);
   const [subjectBtn, setSubjectBtn] = useState<string>("");
   const [changeComment, setChangeComment] = useState<number>(-1);
+  const [fontBtn, setFontBtn] = useState<string>("rollingFont");
 
   const handleCommentClick = (index) => {
     if (changeComment === index) {
@@ -97,7 +103,7 @@ export default function FeedbackComponent({ userId }: { userId: number }) {
     setChangeComment(-1);
     try {
       const res = await instance.get(
-        `/comment/${toggle ? "corrected" : "corrector"}=${userId}`
+        `/user/comment/${toggle ? "corrected" : "corrector"}=${userId}`
       );
       setFeedback(res?.data);
     } catch (e) {
@@ -226,8 +232,38 @@ export default function FeedbackComponent({ userId }: { userId: number }) {
             <span className={styles.toggleButton}></span>
           </label>
         </div>
+        <div className={styles.fontBtns}>
+          {fontSelect.map((font, index) => {
+            return (
+              <label
+                key={font.id}
+                htmlFor={font.id}
+              >
+                <input
+                  type="radio"
+                  name="fontType"
+                  id={font.id}
+                  value={font.id}
+                  onChange={() => setFontBtn(font.id)}
+                  checked={fontBtn === font.id}
+                />
+                <div
+                  className={`${styles.fontBtn} ${
+                    index === 0 ? styles.rollingFont : styles.handFont
+                  }`}
+                >
+                  {font.label}
+                </div>
+              </label>
+            );
+          })}
+        </div>
       </div>
-      <div className={styles.feedbackLogWrap}>
+      <div
+        className={`${styles.feedbackLogWrap} 
+			${styles[`${fontBtn}`]}
+        }`}
+      >
         {feedback[0] ? (
           feedback.map((log, index) => {
             return (

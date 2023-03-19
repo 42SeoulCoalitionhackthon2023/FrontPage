@@ -132,12 +132,11 @@
       cursor: pointer;
       .toggleText {
         position: absolute;
-        top: 50%;
+        top: 40%;
         left: 50%;
         font-size: 1.5rem;
         font-weight: 800;
         transform: translate(0, -50%);
-        margin-bottom: 0.2rem;
       }
     }
   }
@@ -157,8 +156,8 @@
     background: $blue;
     .toggleText {
       position: absolute;
-      top: 50%;
-      left: 15%;
+      top: 40%;
+      left: 10%;
       transform: translate(0, -50%);
     }
   }
@@ -178,10 +177,7 @@
     padding: 0 1rem;
     max-height: 28rem;
     overflow-y: scroll;
-    font-family: "NanumSquare";
-    font-size: 1rem;
 
-    font-weight: 1000;
     .feedbackLog {
       padding: 0.5rem;
       border-radius: 10px;
@@ -204,5 +200,47 @@
       border-radius: 10px;
       height: 20rem;
     }
+  }
+}
+
+.rollingFont {
+  font-family: "NanumSquare";
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.handFont {
+  font-family: "HandFont";
+  font-size: 1.5rem;
+  font-weight: 900;
+}
+
+.fontBtns {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  font-size: 1.5rem;
+  height: 1.5rem;
+  margin-left: 3rem;
+  width: 8rem;
+
+  input[type="radio"] {
+    display: none;
+  }
+  :checked + .fontBtn {
+    background-color: $blue;
+    border-radius: 10px;
+    color: white;
+  }
+  .fontBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 3rem;
+    height: 1.5rem;
+    background-color: white;
+    border-radius: 10px;
+    text-align: center;
+    cursor: pointer;
   }
 }
