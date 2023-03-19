@@ -14,6 +14,7 @@ type UserInfo = {
   image: string;
   blackhole: string;
   level: number;
+  circle: number;
 };
 
 const LEVELZERO = 49;
@@ -94,7 +95,7 @@ export default function UserInfoComponent({
         </div>
       </div>
       <div className={styles.statInfo}>
-        <div className={styles.circle}>Circle: {/* {circle} */}</div>
+        <div className={styles.circle}>Circle: {userInfo?.circle}</div>
         <div className={styles.levelImg}>
           <Image
             src={levelImage}
