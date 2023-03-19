@@ -94,6 +94,7 @@ export default function FeedbackComponent({ userId }: { userId: number }) {
     if (!userId) return;
     if (circleBtn !== "0") return;
     if (subjectBtn) return;
+    setChangeComment(-1);
     try {
       const res = await instance.get(
         `/comment/${toggle ? "corrected" : "corrector"}=${userId}`
@@ -107,6 +108,7 @@ export default function FeedbackComponent({ userId }: { userId: number }) {
   const getSubjectFeedbackHandler = useCallback(async () => {
     if (!userId) return;
     if (!subjectBtn) return;
+    setChangeComment(-1);
     try {
       const res = await instance.get(
         `/comment/${toggle ? "corrected" : "corrector"}=${userId}/${subjectBtn}`
@@ -280,6 +282,7 @@ export default function FeedbackComponent({ userId }: { userId: number }) {
                     {log.finalMark}%
                   </div>
                 </div>
+                <hr />
                 {changeComment === index ? (
                   <>
                     <div
