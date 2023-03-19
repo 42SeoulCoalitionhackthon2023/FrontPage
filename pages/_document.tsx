@@ -5,7 +5,7 @@ export default function Document() {
     <Html lang="en">
       <Head />
       <title>15 Minutes Is Enough!</title>
-      <body>
+      <body style={{ margin: 0 }}>
         <Main />
         <NextScript />
       </body>
