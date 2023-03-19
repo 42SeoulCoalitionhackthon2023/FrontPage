@@ -13,6 +13,7 @@ export default function SearchBar() {
   const router = useRouter();
 
   const goDetail = () => {
+    if (intraId.length === 0) return;
     setDropDown(false);
     setError("");
     router.push(`/detail?intraId=${intraId}`);
