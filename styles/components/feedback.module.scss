@@ -176,7 +176,7 @@
       border-radius: 10px;
       background-color: white;
       margin-bottom: 1rem;
-	  text-align: justify;
+      text-align: justify;
       line-height: 130%;
 
       .commentBtn {
@@ -230,6 +230,7 @@
 
 .feedbackTitleRolling {
   font-family: "NanumSquare";
+  font-weight: bold;
   font-size: 1.5rem;
   margin-left: 1rem;
 }
@@ -249,4 +250,9 @@
 .handFont {
   font-family: "HandFont";
   font-size: 1.5rem;
+}
+
+.feedbackName {
+  color: $wenge;
+  margin-bottom: 0.5rem;
 }

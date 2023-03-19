@@ -296,7 +296,7 @@ export default function FeedbackComponent({ userId }: { userId: number }) {
                     onClick={() => handleCommentClick(index)}
                   >
                     <MdOutlineChangeCircle
-                      style={{ marginBottom: "0.2rem" }}
+                      style={{ marginTop: "0.1rem" }}
                       size="15"
                     />
                   </div>
@@ -332,16 +332,12 @@ export default function FeedbackComponent({ userId }: { userId: number }) {
                 <hr />
                 {changeComment === index ? (
                   <>
-                    <div
-                      style={{ marginTop: "0.5rem" }}
-                    >{`${log.corrected} :`}</div>
+                    <div className={styles.feedbackName}>{log.corrected}</div>
                     <div>{log.feedback}</div>
                   </>
                 ) : (
                   <>
-                    <div
-                      style={{ marginTop: "0.5rem" }}
-                    >{`${log.corrector} :`}</div>
+                    <div className={styles.feedbackName}>{log.corrector}</div>
                     <div>{log.comment}</div>
                   </>
                 )}
