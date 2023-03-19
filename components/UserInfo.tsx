@@ -29,7 +29,7 @@ export default function UserInfoComponent({
 }: {
   userInfo: UserInfo;
 }) {
-  const { intraId, image, blackhole, level } = userInfo;
+  const { intraId, image, blackhole, level, circle } = userInfo;
 
   const today = new Date();
   const blackholeDate = new Date(blackhole);
@@ -95,7 +95,9 @@ export default function UserInfoComponent({
         </div>
       </div>
       <div className={styles.statInfo}>
-        <div className={styles.circle}>Circle: {userInfo?.circle}</div>
+        <div className={styles.circle}>
+          {circle === -1 ? ` ` : `Circle: ${circle}`}
+        </div>
         <div className={styles.levelImg}>
           <Image
             src={levelImage}
