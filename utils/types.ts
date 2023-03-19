@@ -4,7 +4,7 @@ export type UserInfo = {
   image: string;
   blackhole: string;
   level: number;
-  cicle: number;
+  circle: number;
 };
 
 export type Feedback = {

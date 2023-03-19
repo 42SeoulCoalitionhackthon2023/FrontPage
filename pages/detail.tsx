@@ -18,6 +18,7 @@ export default function Detail() {
     image: "",
     blackhole: "",
     level: 0,
+    circle: -1,
   });
   const setError = useSetRecoilState(errorState);
 
