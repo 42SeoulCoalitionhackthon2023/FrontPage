@@ -21,8 +21,8 @@ export default function LoginChecker({ children }: LoginCheckerProps) {
     if (logginKey === "평가풍년") {
       localStorage.setItem("15ME-token", logginKey);
       router.replace(`/`);
+      setLoggedIn(true);
     }
-    setLoggedIn(true);
   }, [logginKey]);
 
   useEffect(() => {
