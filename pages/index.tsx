@@ -5,15 +5,10 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import styles from "../styles/Home.module.scss";
 import infoImage from "/public/image/info.png";
-import ReactGA from 'react-ga'
 
 export default function Home() {
   const [info, setInfo] = useState<boolean>(false);
   const router = useRouter();
-  
-  useEffect(() =>{
-    ReactGA.pageview(router.pathname)
-  }, []);
 
   const goHome = () => {
     router.push("/");

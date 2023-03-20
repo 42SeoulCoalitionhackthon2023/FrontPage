@@ -35,7 +35,6 @@ export default function Detail() {
 
   useEffect(() => {
     getBasicInfoHandler();
-    ReactGA.pageview(router.pathname);
   }, [intraId]);
 
   return (
