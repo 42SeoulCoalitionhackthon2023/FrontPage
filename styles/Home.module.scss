@@ -1,9 +1,10 @@
 @import "styles/common.scss";
 
 .pageWrap {
-  max-width: 50rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   min-height: calc(100vh - 8rem);
-  margin: 0 auto;
 
   .background {
     @include background;
